@@ -1,0 +1,33 @@
+.menu-enter-active {
+  animation: menu-slide-down 0.5s;
+}
+.menu-leave-active {
+  animation: menu-slide-down 0.5s reverse;
+}
+
+@keyframes menu-slide-down {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -2rem, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fade-enter-active {
+  animation: fade 0.5s;
+}
+.fade-leave-active {
+  animation: fade 0.5s reverse;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

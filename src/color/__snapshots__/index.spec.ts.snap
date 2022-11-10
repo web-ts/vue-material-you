@@ -1,0 +1,36 @@
+// Vitest Snapshot v1
+
+exports[`color > should create the right color variables 1`] = `
+"* {
+--md-sys-color-primary: 103, 80, 164;
+ --md-sys-color-on-primary: 255, 255, 255;
+ --md-sys-color-primary-container: 233, 221, 255;
+ --md-sys-color-on-primary-container: 34, 0, 93;
+ --md-sys-color-secondary: 98, 91, 113;
+ --md-sys-color-on-secondary: 255, 255, 255;
+ --md-sys-color-secondary-container: 232, 222, 248;
+ --md-sys-color-on-secondary-container: 30, 25, 43;
+ --md-sys-color-tertiary: 126, 82, 96;
+ --md-sys-color-on-tertiary: 255, 255, 255;
+ --md-sys-color-tertiary-container: 255, 217, 227;
+ --md-sys-color-on-tertiary-container: 49, 16, 29;
+ --md-sys-color-error: 186, 26, 26;
+ --md-sys-color-on-error: 255, 255, 255;
+ --md-sys-color-error-container: 255, 218, 214;
+ --md-sys-color-on-error-container: 65, 0, 2;
+ --md-sys-color-background: 255, 251, 255;
+ --md-sys-color-on-background: 28, 27, 30;
+ --md-sys-color-surface: 255, 251, 255;
+ --md-sys-color-on-surface: 28, 27, 30;
+ --md-sys-color-surface-variant: 231, 224, 235;
+ --md-sys-color-on-surface-variant: 73, 69, 78;
+ --md-sys-color-outline: 122, 117, 127;
+ --md-sys-color-outline-variant: 202, 196, 207;
+ --md-sys-color-shadow: 0, 0, 0;
+ --md-sys-color-scrim: 0, 0, 0;
+ --md-sys-color-inverse-surface: 49, 48, 51;
+ --md-sys-color-inverse-on-surface: 244, 239, 244;
+ --md-sys-color-inverse-primary: 207, 188, 255;
+
+--md-sys-color-disabled: 31, 31, 31}"
+`;

@@ -1,0 +1,1 @@
+export type ButtonType = "filled" | "outlined" | "text" | "elevated" | "tonal";

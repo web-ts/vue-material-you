@@ -1,0 +1,35 @@
+@use "@/scss/colors" as *;
+
+.dialog {
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contents {
+  background-color: rgb($background);
+  color: rgb($on-background);
+  border-radius: 28px;
+  padding: 1.5rem;
+  min-width: 280px;
+  max-width: 560px;
+}
+
+.title {
+  margin-bottom: 1rem;
+}
+
+.actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
