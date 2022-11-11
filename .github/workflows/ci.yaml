@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: ["release"]
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.2.4
+
+      - name: Install deps
+        run: pnpm install
+
+      - name: Build lib
+        run: pnpm run build
+      - uses: actions/upload-artifact@v3
+        with:
+          name: build artifacts
+          path: dist/
+
+      - name: Set node version to 19.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: "19.x"
+          cache: "pnpm"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Publish to npmjs
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      - run: echo "PACKAGE_JSON=$(jq -c . < package.json)" >> $GITHUB_ENV
+
+      - name: Create release
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "v${{ fromJson(env.PACKAGE_JSON).version }}"
+          prerelease: false
+          title: "Release v${{ fromJson(env.PACKAGE_JSON).version }}"
