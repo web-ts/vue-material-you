@@ -11,7 +11,7 @@ function calculateScale(size: number, width: number, height: number, x: number, 
 
   const max = Math.max(w, h);
 
-  return max / size;
+  return (max / size) * 1.1;
 }
 
 export default function () {

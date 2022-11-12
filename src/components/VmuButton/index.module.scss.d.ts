@@ -9,12 +9,4 @@ declare const classNames: {
   readonly tonal: "tonal";
 };
 export default classNames;
-export type ClassNames =
-  | "button"
-  | "padding"
-  | "padding-icon"
-  | "filled"
-  | "outlined"
-  | "text"
-  | "elevated"
-  | "tonal";
+export type ClassNames = "button" | "padding" | "padding-icon" | "filled" | "outlined" | "text" | "elevated" | "tonal";

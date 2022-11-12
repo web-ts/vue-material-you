@@ -1,3 +1,5 @@
+@use "colors" as *;
+
 .md-text-body-small {
   font-weight: 400;
   font-size: 12px;
@@ -93,4 +95,8 @@
   font-weight: 400;
   font-size: 57px;
   line-height: 64px;
+}
+
+.md-text-on-background {
+  color: rgb($on-background);
 }

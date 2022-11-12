@@ -14,6 +14,6 @@ window.addEventListener("resize", update);
 export default function () {
   return {
     height,
-    width
+    width,
   };
 }
