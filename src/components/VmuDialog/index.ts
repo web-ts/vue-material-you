@@ -1,13 +1,17 @@
 import useModel from "@/composables/use-model";
-import useWindowDimensions from "@/composables/use-window-dimensions";
 import emit from "@/utilities/emit";
 import prop from "@/utilities/prop";
 import scss from "./index.module.scss";
-import { renderSlot, StyleValue, Teleport, Transition } from "vue";
-import VmuButton from "../VmuButton";
+import { StyleValue, Transition } from "vue";
 import useId from "@/composables/use-id";
-import VmuIcon from "../VmuIcon";
 import useDialog from "../../composables/use-dialog";
+import Scrim from "../Scrim";
+import vModel from "@/utilities/v-model";
+import DialogTitle from "./DialogTitle";
+import DialogDescription from "./DialogDescription";
+import DialogIcon from "./DialogIcon";
+import { DialogAction } from "./types";
+import DialogActions from "./DialogActions";
 
 export default defineComponent({
   name: "VmDialog",
@@ -21,95 +25,73 @@ export default defineComponent({
     title: prop<string>(),
     description: prop<string>(),
     icon: prop<string>(),
+    actions: prop<Array<DialogAction>>(() => [])
   },
   emits: {
-    "update:modelValue": emit<boolean>(),
+    "update:modelValue": emit<boolean>()
   },
   setup(props, { emit, attrs, slots }) {
-    const { height } = useWindowDimensions();
     const id = useId(props);
     const open = useModel(props, emit);
+
+    // #region animation
+
+    const scrimOpen = ref(false);
+    const contentOpen = ref(false);
+
+    watch(open, (newValue) => {
+      if (newValue) scrimOpen.value = true;
+      else contentOpen.value = false;
+    });
+
+    async function onScrimOpen() {
+      contentOpen.value = true;
+    }
+
+    async function onBeforeLeave() {
+      await nextTick();
+      scrimOpen.value = false;
+    }
+
+    // #endregion
+
     const { isLast } = useDialog(id, open);
-    const style = computed(() => [
-      props.style,
-      {
-        top: 0,
-        left: 0,
-        position: "fixed",
-        width: "100vw",
-        height: `${height.value}px`,
-        zIndex: props.zIndex,
-      },
-    ]);
 
     return () =>
       h(
-        Teleport,
-        { to: "body" },
+        Scrim,
+        {
+          ...attrs,
+          ...vModel(scrimOpen),
+          id: id.value,
+          isLast: isLast.value,
+          onOpen: onScrimOpen
+        },
+        // Content Transition
         h(
           Transition,
-          { name: "fade" },
+          {
+            name: "vmu-dialog-content",
+            onBeforeLeave
+          },
           () =>
-            open.value &&
-            h(
-              "div",
-              {
-                class: scss.dialog,
-                ...attrs,
-                id: id.value,
-                style: style.value,
-                "aria-hidden": !isLast.value,
-                tabindex: !isLast.value ? -1 : undefined,
-                role: "dialog",
-                "aria-modal": "true",
-                "aria-labelledby": `${id.value}_title`,
-                "aria-describedby": `${id.value}_description`,
-              },
-              h(Transition, { name: "menu", appear: true }, () =>
-                h("div", { class: scss.contents }, [
-                  props.icon &&
-                    h(
-                      "div",
-                      { class: scss.icon },
-                      h(VmuIcon, {
-                        icon: props.icon,
-                        props: { width: 24, height: 24 },
-                      })
-                    ),
-                  h(
-                    "h1",
-                    {
-                      id: `${id.value}_title`,
-                      class: ["md-text-headline-small", scss.title],
-                      style: { textAlign: props.icon ? "center" : "left" },
-                    },
-                    props.title
-                  ),
-                  h(
-                    "p",
-                    {
-                      id: `${id.value}_description`,
-                      class: "md-text-body-medium",
-                    },
-                    props.description
-                  ),
-                  renderSlot(slots, "default"),
-                  h("div", { class: scss.actions }, [
-                    h(
-                      VmuButton,
-                      { type: "text", onClick: () => (open.value = false) },
-                      "Cancel"
-                    ),
-                    h(
-                      VmuButton,
-                      { type: "text", onClick: () => (open.value = false) },
-                      "Save"
-                    ),
-                  ]),
-                ])
-              )
-            )
+            // Content
+            contentOpen.value &&
+            h("div", { class: scss.contents }, [
+              h(DialogIcon, { icon: props.icon }),
+              h(DialogTitle, {
+                dialogId: id.value,
+                title: props.title,
+                icon: props.icon
+              }),
+              h(DialogDescription, {
+                dialogId: id.value,
+                description: props.description
+              }),
+              slots.default && slots.default(),
+              h(DialogActions, { actions: props.actions })
+            ])
         )
       );
-  },
+  }
 });

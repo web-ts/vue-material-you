@@ -21,6 +21,7 @@ specifiers:
   vite-plugin-sass-dts: ^1.1.44
   vitest: ^0.25.1
   vue: ^3.2.43
+  vue-router: ^4.1.6
 
 devDependencies:
   '@iconify/vue': 4.0.0_vue@3.2.43
@@ -43,6 +44,7 @@ devDependencies:
   vite-plugin-sass-dts: 1.1.44_2i4hlrdgs4f2fh5grt7w62slbm
   vitest: 0.25.1_cctyao5kcecaehzi4atfgr7esa
   vue: 3.2.43
+  vue-router: 4.1.6_vue@3.2.43
 
 packages:
 
@@ -557,6 +559,10 @@ packages:
     dependencies:
       '@vue/compiler-dom': 3.2.43
       '@vue/shared': 3.2.43
+    dev: true
+
+  /@vue/devtools-api/6.4.5:
+    resolution: {integrity: sha512-JD5fcdIuFxU4fQyXUu3w2KpAJHzTVdN+p4iOX2lMWSHMOoQdMAcpFLZzm9Z/2nmsoZ1a96QEhZ26e50xLBsgOQ==}
     dev: true
 
   /@vue/reactivity-transform/3.2.43:
@@ -2641,6 +2647,15 @@ packages:
       semver: 7.3.8
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /vue-router/4.1.6_vue@3.2.43:
+    resolution: {integrity: sha512-DYWYwsG6xNPmLq/FmZn8Ip+qrhFEzA14EI12MsMgVxvHFDYvlr4NXpVF5hrRH1wVcDP8fGi5F4rxuJSl8/r+EQ==}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@vue/devtools-api': 6.4.5
+      vue: 3.2.43
     dev: true
 
   /vue/3.2.43:

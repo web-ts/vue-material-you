@@ -16,7 +16,7 @@ export default defineComponent({
   },
   setup(props, { slots }) {
     const classList = computed(() => [
-      "md-text-label-large md-ripple",
+      "vmu-text-label-large vmu-ripple",
       scss.button,
       props.icon ? scss["padding-icon"] : scss.padding,
       scss[props.type]
