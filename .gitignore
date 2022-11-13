@@ -21,6 +21,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-dev/*
-!dev/main.ts
-!dev/style.scss

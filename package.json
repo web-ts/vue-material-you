@@ -51,6 +51,7 @@
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-sass-dts": "^1.1.44",
     "vitest": "^0.25.1",
-    "vue": "^3.2.43"
+    "vue": "^3.2.43",
+    "vue-router": "^4.1.6"
   }
 }
