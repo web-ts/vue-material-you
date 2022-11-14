@@ -15,7 +15,7 @@
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "skipLibCheck": true,
-    "types": ["node", "vite/client"],
+    "types": ["node", "vite/client", "@modyfi/vite-plugin-yaml/modules"],
     "paths": {
       "@/*": ["./src/*"]
     }

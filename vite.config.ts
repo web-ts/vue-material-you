@@ -6,6 +6,7 @@ import esLint from "vite-plugin-eslint";
 import dts from "vite-plugin-dts";
 import autoImport from "unplugin-auto-import/vite";
 import sassDts from "vite-plugin-sass-dts";
+import yaml from "@modyfi/vite-plugin-yaml";
 
 /**
  * Resolve scss For sassDts
@@ -16,7 +17,7 @@ function scssResolver(args: Array<string>, filename: string) {
   }
 
   return {
-    file: `${filename.replace("@", resolve(__dirname, "src"))}.scss`,
+    file: `${filename.replace("@", resolve(__dirname, "src"))}.scss`
   };
 }
 
@@ -25,54 +26,53 @@ export default defineConfig({
     include: ["./src/**/*.spec.ts"],
     environment: "happy-dom",
     deps: {
-      inline: [
-        "@material/material-color-utilities"
-      ]
+      inline: ["@material/material-color-utilities"]
     },
     coverage: {
       lines: 80,
       functions: 80,
       branches: 80,
-      statements: 80,
+      statements: 80
     }
   },
   resolve: {
     alias: {
-      "@": resolve(__dirname, "./src"),
+      "@": resolve(__dirname, "./src")
     },
-    dedupe: ["vue"],
+    dedupe: ["vue"]
   },
   css: {
     preprocessorOptions: {
       scss: {
         importer(...args) {
           return scssResolver(args, args[0]);
-        },
-      },
-    },
+        }
+      }
+    }
   },
   build: {
     lib: {
       entry: resolve(__dirname, "./src/index.ts"),
       name: "VueMaterialYou",
-      fileName: (format) => `vue-material-you.${format}.js`,
+      fileName: (format) => `vue-material-you.${format}.js`
     },
     rollupOptions: {
       external: ["vue"],
       output: {
         globals: {
-          vue: "Vue",
-        },
-      },
-    },
+          vue: "Vue"
+        }
+      }
+    }
   },
   plugins: [
+    yaml(),
     esLint(),
     dts(),
     sassDts(),
     autoImport({
       imports: ["vue"],
-      dts: "src/auto-imports.d.ts",
-    }),
-  ],
+      dts: "src/auto-imports.d.ts"
+    })
+  ]
 });
