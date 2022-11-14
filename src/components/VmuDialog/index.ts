@@ -1,8 +1,7 @@
 import useModel from "@/composables/use-model";
 import emit from "@/utilities/emit";
 import prop from "@/utilities/prop";
-import scss from "./index.module.scss";
-import { StyleValue, Transition } from "vue";
+import { StyleValue } from "vue";
 import useId from "@/composables/use-id";
 import useDialog from "../../composables/use-dialog";
 import Scrim from "../Scrim";
@@ -12,6 +11,8 @@ import DialogDescription from "./DialogDescription";
 import DialogIcon from "./DialogIcon";
 import { DialogAction } from "./types";
 import DialogActions from "./DialogActions";
+import DialogContent from "./DialogContent";
+import { getMessage } from "@/messages";
 
 export default defineComponent({
   name: "VmDialog",
@@ -25,6 +26,7 @@ export default defineComponent({
     title: prop<string>(),
     description: prop<string>(),
     icon: prop<string>(),
+    showCloseAction: prop<boolean>({ default: false, type: Boolean }),
     actions: prop<Array<DialogAction>>(() => [])
   },
   emits: {
@@ -33,6 +35,7 @@ export default defineComponent({
   setup(props, { emit, attrs, slots }) {
     const id = useId(props);
     const open = useModel(props, emit);
+    const { isLast } = useDialog(id, open);
 
     // #region animation
 
@@ -53,14 +56,23 @@ export default defineComponent({
       contentOpen.value = true;
     }
 
-    async function onBeforeLeave() {
+    async function onContentClose() {
       await nextTick();
       scrimOpen.value = false;
     }
 
     // #endregion
 
-    const { isLast } = useDialog(id, open);
+    const actions = computed(() => {
+      if (!props.showCloseAction) return props.actions;
+
+      const defaultCloseAction = {
+        name: getMessage("dialog.actions.cancel").value,
+        handler: () => (open.value = false)
+      };
+
+      return [...props.actions, defaultCloseAction];
+    });
 
     return () =>
       h(
@@ -74,30 +86,22 @@ export default defineComponent({
         },
         // Content Transition
         () =>
-          h(
-            Transition,
-            {
-              name: "vmu-dialog-content",
-              onBeforeLeave
-            },
-            () =>
-              // Content
-              contentOpen.value &&
-              h("div", { class: scss.contents }, [
-                h(DialogIcon, { icon: props.icon }),
-                h(DialogTitle, {
-                  dialogId: id.value,
-                  title: props.title,
-                  icon: props.icon
-                }),
-                h(DialogDescription, {
-                  dialogId: id.value,
-                  description: props.description
-                }),
-                slots.default && slots.default(),
-                h(DialogActions, { actions: props.actions })
-              ])
-          )
+          h(DialogContent, { isOpen: contentOpen.value, onClose: onContentClose }, () => [
+            h(DialogIcon, { icon: props.icon }),
+            h(DialogTitle, {
+              dialogId: id.value,
+              title: props.title,
+              icon: props.icon
+            }),
+            h(DialogDescription, {
+              dialogId: id.value,
+              description: props.description
+            }),
+            slots.default && slots.default(),
+            h(DialogActions, {
+              actions: actions.value
+            })
+          ])
       );
   }
 });
