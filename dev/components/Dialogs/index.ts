@@ -4,7 +4,7 @@ import vModel from "@/utilities/v-model";
 export default defineComponent({
   name: "Dialogs",
   setup() {
-    const defaultDialog = ref(false);
+    const defaultDialog = ref(true);
     const iconDialog = ref(false);
 
     return () =>

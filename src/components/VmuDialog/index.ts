@@ -39,6 +39,11 @@ export default defineComponent({
     const scrimOpen = ref(false);
     const contentOpen = ref(false);
 
+    // Check if it's open by default
+    if (open.value) {
+      scrimOpen.value = true;
+      contentOpen.value = true;
+    }
     watch(open, (newValue) => {
       if (newValue) scrimOpen.value = true;
       else contentOpen.value = false;
@@ -68,30 +73,31 @@ export default defineComponent({
           onOpen: onScrimOpen
         },
         // Content Transition
-        h(
-          Transition,
-          {
-            name: "vmu-dialog-content",
-            onBeforeLeave
-          },
-          () =>
-            // Content
-            contentOpen.value &&
-            h("div", { class: scss.contents }, [
-              h(DialogIcon, { icon: props.icon }),
-              h(DialogTitle, {
-                dialogId: id.value,
-                title: props.title,
-                icon: props.icon
-              }),
-              h(DialogDescription, {
-                dialogId: id.value,
-                description: props.description
-              }),
-              slots.default && slots.default(),
-              h(DialogActions, { actions: props.actions })
-            ])
-        )
+        () =>
+          h(
+            Transition,
+            {
+              name: "vmu-dialog-content",
+              onBeforeLeave
+            },
+            () =>
+              // Content
+              contentOpen.value &&
+              h("div", { class: scss.contents }, [
+                h(DialogIcon, { icon: props.icon }),
+                h(DialogTitle, {
+                  dialogId: id.value,
+                  title: props.title,
+                  icon: props.icon
+                }),
+                h(DialogDescription, {
+                  dialogId: id.value,
+                  description: props.description
+                }),
+                slots.default && slots.default(),
+                h(DialogActions, { actions: props.actions })
+              ])
+          )
       );
   }
 });
