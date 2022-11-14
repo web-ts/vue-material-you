@@ -1,8 +1,0 @@
-{
-  "light": {
-    "--vmu-color-disabled": "31, 31, 31"
-  },
-  "dark": {
-    "--vmu-color-disabled": "227, 227, 227"
-  }
-}

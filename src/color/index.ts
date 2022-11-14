@@ -1,5 +1,5 @@
 import { argbFromHex, themeFromSourceColor, applyTheme } from "@material/material-color-utilities";
-import customColors from "./custom-colors.json";
+import customColors from "./custom-colors.yaml";
 import { isDark } from "./dark-mode";
 import { isHexColor, rgbFromHex } from "./hex-utilities";
 
