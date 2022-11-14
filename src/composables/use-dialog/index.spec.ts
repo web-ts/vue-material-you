@@ -20,6 +20,7 @@ const component = defineComponent({
 });
 
 describe("use-dialog", () => {
+  document.body.innerHTML = "<div id='app'></div>";
   const wrapper = mount(component);
 
   it("should add it to the list", async () => {
