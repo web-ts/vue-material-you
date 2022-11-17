@@ -1,3 +1,4 @@
+import { DialogAction } from "@/components/VmuDialog/types";
 import { VmuButton, VmuDialog } from "@/index";
 import vModel from "@/utilities/v-model";
 
@@ -7,6 +8,15 @@ export default defineComponent({
     const defaultDialog = ref(false);
     const iconDialog = ref(false);
     const fullScreenDialog = ref(false);
+
+    const actions: Array<DialogAction> = [
+      {
+        name: "Save",
+        handler: () => {
+          fullScreenDialog.value = false;
+        }
+      }
+    ];
 
     return () =>
       h("div", { style: "display: flex; margin: 4rem; gap: 1rem" }, [
@@ -47,14 +57,16 @@ export default defineComponent({
           ...vModel(iconDialog),
           title: "Icon Dialog",
           icon: "mdi:alert",
-          description: "This is an icon dialog with a very long description that does not make any sense and it's only here to test the dialog's responsiveness.",
+          showCloseAction: true,
+          description:
+            "This is an icon dialog with a very long description that does not make any sense and it's only here to test the dialog's responsiveness."
         }),
         h(VmuDialog, {
           ...vModel(fullScreenDialog),
           title: "Default Dialog",
-          description: "This is a default dialog.",
-          fullScreen: true,
-        }),
+          fullscreen: true,
+          actions
+        })
       ]);
   }
 });

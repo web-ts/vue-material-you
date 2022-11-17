@@ -97,6 +97,8 @@
   line-height: 64px;
 }
 
-.vmu-text-on-background {
-  color: rgb($on-background);
+@each $name, $color in $allColors {
+  .vmu-text-#{$name} {
+    color: rgba($color, var(--vmu-color-opacity));
+  }
 }

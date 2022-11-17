@@ -1,3 +1,4 @@
+/* eslint-disable vue/one-component-per-file */
 import { createVueMaterialYou } from "@/index";
 import { mount } from "@vue/test-utils";
 import { expect, describe, it, beforeEach } from "vitest";
@@ -20,6 +21,7 @@ describe("VmuDialog", () => {
   });
 
   beforeEach(() => {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     document.getElementById("app")!.textContent = "";
   });
 
@@ -75,5 +77,61 @@ describe("VmuDialog", () => {
     });
 
     expect(document.body.innerHTML).toMatch("Test Icon");
+  });
+
+  it("should render a fullscreen dialog ", async () => {
+    mount(VmuDialog, {
+      props: {
+        modelValue: true,
+        fullscreen: true,
+        title: "Test Title"
+      },
+      attachTo: document.body
+    });
+
+    expect(document.body.innerHTML).toMatch("Test Title");
+  });
+
+  it("should render a fullscreen dialog actions", async () => {
+    mount(VmuDialog, {
+      props: { modelValue: true, fullscreen: true, actions: [{ name: "Test", handler: () => 0 }] },
+      attachTo: document.body
+    });
+
+    expect(document.body.innerHTML).toMatch("Test");
+  });
+
+  it("should open a dialog", async () => {
+    const wp = defineComponent({
+      name: "Wrapper",
+      components: { VmuDialog },
+      setup() {
+        const model = ref(false);
+
+        model.value = true;
+
+        return {
+          model
+        };
+      },
+      template: "<vmu-dialog v-model='model' title='Should be present'></vmu-dialog>"
+    });
+
+    mount(wp, {
+      attachTo: document.body
+    });
+
+    expect(document.body.innerHTML).toMatch("Should be present");
+  });
+
+  it("should close a dialog", async () => {
+    const wrapper = mount(VmuDialog, {
+      props: { modelValue: true, title: "Should not be present" },
+      attachTo: document.body
+    });
+
+    await wrapper.setProps({ modelValue: false });
+
+    expect(!document.body.innerHTML.includes("Should not be present")).toBeTruthy();
   });
 });

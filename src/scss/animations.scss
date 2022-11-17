@@ -23,11 +23,27 @@
 
 @keyframes vmu-dialog-content-slide-down {
   0% {
-    opacity: 0;
-    transform: translate3d(0, -2rem, 0);
+    transform: translate3d(0, -10rem, 0);
+    max-height: 0;
   }
   100% {
-    opacity: 1;
+    max-height: var(--vmu-max-height);
     transform: translate3d(0, 0, 0);
+  }
+}
+
+.vmu-fullscreen-dialog-content-enter-active {
+  animation: vmu-fullscreen-dialog-content-slide-down 0.5s reverse;
+}
+.vmu-fullscreen-dialog-content-leave-active {
+  animation: vmu-fullscreen-dialog-content-slide-down 0.5s;
+}
+
+@keyframes vmu-fullscreen-dialog-content-slide-down {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 100%, 0);
   }
 }

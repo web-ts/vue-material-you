@@ -19,6 +19,7 @@ specifiers:
   vite: ^3.2.3
   vite-plugin-dts: ^1.7.0
   vite-plugin-eslint: ^1.8.1
+  vite-plugin-raw: ^1.0.3
   vite-plugin-sass-dts: ^1.1.44
   vitest: ^0.25.1
   vue: ^3.2.43
@@ -43,6 +44,7 @@ devDependencies:
   vite: 3.2.3_ajklay5k626t46b6fyghkbup3i
   vite-plugin-dts: 1.7.0_vite@3.2.3
   vite-plugin-eslint: 1.8.1_eslint@8.27.0+vite@3.2.3
+  vite-plugin-raw: 1.0.3
   vite-plugin-sass-dts: 1.1.44_2i4hlrdgs4f2fh5grt7w62slbm
   vitest: 0.25.1_cctyao5kcecaehzi4atfgr7esa
   vue: 3.2.43
@@ -2553,6 +2555,10 @@ packages:
       eslint: 8.27.0
       rollup: 2.79.1
       vite: 3.2.3_ajklay5k626t46b6fyghkbup3i
+    dev: true
+
+  /vite-plugin-raw/1.0.3:
+    resolution: {integrity: sha512-9jWSN6RUlSiM7sd5tr/x9R7vQUs54K+FtNm1EpaAXTtu9mg7DbvEqtMSudIC432y4ZXIM8tMAtb3jw3dVHSOUQ==}
     dev: true
 
   /vite-plugin-sass-dts/1.1.44_2i4hlrdgs4f2fh5grt7w62slbm:

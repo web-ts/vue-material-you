@@ -7,6 +7,7 @@ import dts from "vite-plugin-dts";
 import autoImport from "unplugin-auto-import/vite";
 import sassDts from "vite-plugin-sass-dts";
 import yaml from "@modyfi/vite-plugin-yaml";
+import vitePluginRaw from "vite-plugin-raw";
 
 /**
  * Resolve scss For sassDts
@@ -66,6 +67,9 @@ export default defineConfig({
     }
   },
   plugins: [
+    vitePluginRaw({
+      match: /\.svg$/
+    }),
     yaml(),
     esLint(),
     dts(),

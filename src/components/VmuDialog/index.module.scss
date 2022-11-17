@@ -1,19 +1,13 @@
 @use "@/scss/colors" as *;
-
-.dialog {
-  background-color: rgba($color: #000000, $alpha: 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+@use "@/scss/variables" as *;
 
 .contents {
-  background-color: rgb($background);
-  color: rgb($on-background);
+  background-color: rgb($surface);
   border-radius: 28px;
   padding: 1.5rem;
   min-width: 280px;
   max-width: 560px;
+  overflow: hidden;
 }
 
 .title {
@@ -32,4 +26,45 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
+}
+
+.fullscreenContents {
+  background-color: rgb($surface);
+  color: rgb($on-surface);
+  width: 100%;
+  height: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  height: 3.5rem;
+  &___title {
+    text-align: left;
+    margin-right: 1rem;
+    flex-grow: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  &___close {
+    cursor: pointer;
+    width: 1.5rem;
+    min-width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 1rem;
+    border-radius: 100%;
+    transition: background-color $transition;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: rgb($primary);
+      background-color: rgba($primary, 0.12);
+    }
+  }
 }

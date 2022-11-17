@@ -14,7 +14,7 @@ export default defineComponent({
         "h1",
         {
           id: `${props.dialogId}_title`,
-          class: ["vmu-text-headline-small", scss.title],
+          class: ["vmu-text-headline-small vmu-text-on-surface", scss.title],
           style: { textAlign: props.icon ? "center" : "left" }
         },
         props.title

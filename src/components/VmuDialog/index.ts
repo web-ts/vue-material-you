@@ -13,6 +13,8 @@ import { DialogAction } from "./types";
 import DialogActions from "./DialogActions";
 import DialogContent from "./DialogContent";
 import { getMessage } from "@/messages";
+import DialogFullscreenContent from "./DialogFullscreenContent";
+import DialogFullscreenHeader from "./DialogFullscreenHeader";
 
 export default defineComponent({
   name: "VmDialog",
@@ -21,7 +23,7 @@ export default defineComponent({
     id: prop<string>(),
     zIndex: prop<number>(100),
     modelValue: prop<boolean>({ default: undefined, type: Boolean }),
-    fullScreen: prop<boolean>({ default: true, type: Boolean }),
+    fullscreen: prop<boolean>({ default: false, type: Boolean }),
     style: prop<StyleValue>(),
     title: prop<string>(),
     description: prop<string>(),
@@ -86,22 +88,32 @@ export default defineComponent({
         },
         // Content Transition
         () =>
-          h(DialogContent, { isOpen: contentOpen.value, onClose: onContentClose }, () => [
-            h(DialogIcon, { icon: props.icon }),
-            h(DialogTitle, {
-              dialogId: id.value,
-              title: props.title,
-              icon: props.icon
-            }),
-            h(DialogDescription, {
-              dialogId: id.value,
-              description: props.description
-            }),
-            slots.default && slots.default(),
-            h(DialogActions, {
-              actions: actions.value
-            })
-          ])
+          (!props.fullscreen
+            ? h(DialogContent, { isOpen: contentOpen.value, onClose: onContentClose }, () => [
+                h(DialogIcon, { icon: props.icon }),
+                h(DialogTitle, {
+                  dialogId: id.value,
+                  title: props.title,
+                  icon: props.icon
+                }),
+                h(DialogDescription, {
+                  dialogId: id.value,
+                  description: props.description
+                }),
+                slots.default && slots.default(),
+                h(DialogActions, {
+                  actions: actions.value
+                })
+              ])
+            : h(DialogFullscreenContent, { isOpen: contentOpen.value, onClose: onContentClose }, () => [
+                h(DialogFullscreenHeader, {
+                  dialogId: id.value,
+                  title: props.title,
+                  actions: actions.value,
+                  onClose: ()=> (open.value = false)
+                }),
+                slots.default && slots.default()
+              ]))
       );
   }
 });

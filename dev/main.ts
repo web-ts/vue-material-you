@@ -1,4 +1,4 @@
-import { createVueMaterialYou } from "@/index";
+import { createVueMaterialYou, setMessages } from "@/index";
 import App from "./App";
 import { Icon } from "@iconify/vue";
 import "@/scss/style.scss";
@@ -13,6 +13,14 @@ const materialYou = createVueMaterialYou({
     defaults: { width: "18", height: "18" }
   },
   mountedOn: "#app"
+});
+
+setMessages({
+  dialog: {
+    actions: {
+      anotherAction: "Another Action"
+    }
+  }
 });
 
 const app = createApp(App);

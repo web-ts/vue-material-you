@@ -27,3 +27,33 @@ $inverse-on-surface: var(--vmu-color-inverse-on-surface);
 $inverse-primary: var(--vmu-color-inverse-primary);
 $disabled: var(--vmu-color-disabled);
 
+$allColors: (
+  primary: $primary,
+  on-primary: $on-primary,
+  primary-container: $primary-container,
+  on-primary-container: $on-primary-container,
+  secondary: $secondary,
+  on-secondary: $on-secondary,
+  secondary-container: $secondary-container,
+  on-secondary-container: $on-secondary-container,
+  tertiary: $tertiary,
+  on-tertiary: $on-tertiary,
+  tertiary-container: $tertiary-container,
+  on-tertiary-container: $on-tertiary-container,
+  error: $error,
+  on-error: $on-error,
+  error-container: $error-container,
+  on-error-container: $on-error-container,
+  background: $background,
+  on-background: $on-background,
+  surface: $surface,
+  on-surface: $on-surface,
+  surface-variant: $surface-variant,
+  on-surface-variant: $on-surface-variant,
+  outline: $outline,
+  shadow: $shadow,
+  inverse-surface: $inverse-surface,
+  inverse-on-surface: $inverse-on-surface,
+  inverse-primary: $inverse-primary,
+  disabled: $disabled
+);

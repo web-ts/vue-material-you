@@ -12,7 +12,7 @@ export default defineComponent({
         "p",
         {
           id: `${props.dialogId}_description`,
-          class: "vmu-text-body-medium"
+          class: "vmu-text-body-medium vmu-text-on-surface"
         },
         props.description
       );
