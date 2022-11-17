@@ -1,6 +1,6 @@
 {
   "name": "vue-material-you",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Material design 3 UI framework for Vue 3",
   "scripts": {
     "dev": "vite",
