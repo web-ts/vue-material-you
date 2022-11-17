@@ -1,29 +1,59 @@
-$primary: var(--md-sys-color-primary);
-$on-primary: var(--md-sys-color-on-primary);
-$primary-container: var(--md-sys-color-primary-container);
-$on-primary-container: var(--md-sys-color-on-primary-container);
-$secondary: var(--md-sys-color-secondary);
-$on-secondary: var(--md-sys-color-on-secondary);
-$secondary-container: var(--md-sys-color-secondary-container);
-$on-secondary-container: var(--md-sys-color-on-secondary-container);
-$tertiary: var(--md-sys-color-tertiary);
-$on-tertiary: var(--md-sys-color-on-tertiary);
-$tertiary-container: var(--md-sys-color-tertiary-container);
-$on-tertiary-container: var(--md-sys-color-on-tertiary-container);
-$error: var(--md-sys-color-error);
-$on-error: var(--md-sys-color-on-error);
-$error-container: var(--md-sys-color-error-container);
-$on-error-container: var(--md-sys-color-on-error-container);
-$background: var(--md-sys-color-background);
-$on-background: var(--md-sys-color-on-background);
-$surface: var(--md-sys-color-surface);
-$on-surface: var(--md-sys-color-on-surface);
-$surface-variant: var(--md-sys-color-surface-variant);
-$on-surface-variant: var(--md-sys-color-on-surface-variant);
-$outline: var(--md-sys-color-outline);
-$shadow: var(--md-sys-color-shadow);
-$inverse-surface: var(--md-sys-color-inverse-surface);
-$inverse-on-surface: var(--md-sys-color-inverse-on-surface);
-$inverse-primary: var(--md-sys-color-inverse-primary);
-$disabled: var(--md-sys-color-disabled);
+$primary: var(--vmu-color-primary);
+$on-primary: var(--vmu-color-on-primary);
+$primary-container: var(--vmu-color-primary-container);
+$on-primary-container: var(--vmu-color-on-primary-container);
+$secondary: var(--vmu-color-secondary);
+$on-secondary: var(--vmu-color-on-secondary);
+$secondary-container: var(--vmu-color-secondary-container);
+$on-secondary-container: var(--vmu-color-on-secondary-container);
+$tertiary: var(--vmu-color-tertiary);
+$on-tertiary: var(--vmu-color-on-tertiary);
+$tertiary-container: var(--vmu-color-tertiary-container);
+$on-tertiary-container: var(--vmu-color-on-tertiary-container);
+$error: var(--vmu-color-error);
+$on-error: var(--vmu-color-on-error);
+$error-container: var(--vmu-color-error-container);
+$on-error-container: var(--vmu-color-on-error-container);
+$background: var(--vmu-color-background);
+$on-background: var(--vmu-color-on-background);
+$surface: var(--vmu-color-surface);
+$on-surface: var(--vmu-color-on-surface);
+$surface-variant: var(--vmu-color-surface-variant);
+$on-surface-variant: var(--vmu-color-on-surface-variant);
+$outline: var(--vmu-color-outline);
+$shadow: var(--vmu-color-shadow);
+$inverse-surface: var(--vmu-color-inverse-surface);
+$inverse-on-surface: var(--vmu-color-inverse-on-surface);
+$inverse-primary: var(--vmu-color-inverse-primary);
+$disabled: var(--vmu-color-disabled);
 
+$allColors: (
+  primary: $primary,
+  on-primary: $on-primary,
+  primary-container: $primary-container,
+  on-primary-container: $on-primary-container,
+  secondary: $secondary,
+  on-secondary: $on-secondary,
+  secondary-container: $secondary-container,
+  on-secondary-container: $on-secondary-container,
+  tertiary: $tertiary,
+  on-tertiary: $on-tertiary,
+  tertiary-container: $tertiary-container,
+  on-tertiary-container: $on-tertiary-container,
+  error: $error,
+  on-error: $on-error,
+  error-container: $error-container,
+  on-error-container: $on-error-container,
+  background: $background,
+  on-background: $on-background,
+  surface: $surface,
+  on-surface: $on-surface,
+  surface-variant: $surface-variant,
+  on-surface-variant: $on-surface-variant,
+  outline: $outline,
+  shadow: $shadow,
+  inverse-surface: $inverse-surface,
+  inverse-on-surface: $inverse-on-surface,
+  inverse-primary: $inverse-primary,
+  disabled: $disabled
+);

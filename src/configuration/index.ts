@@ -1,7 +1,7 @@
 import { DefineComponent } from "vue";
 import { VMConfiguration } from "./types";
 
-const config: VMConfiguration = {};
+const config: VMConfiguration = { mountedOn: "app" };
 
 export function getConfiguration() {
   return config;
@@ -20,4 +20,9 @@ export function setIconData(icon: DefineComponent<any, any, any, any>, key: stri
       key,
       defaults
     };
+}
+
+export function setMountedOn(mountedOn: string) {
+  mountedOn = mountedOn.replace("#", "");
+  config.mountedOn = mountedOn;
 }

@@ -1,12 +1,7 @@
-import {
-  argbFromHex,
-  themeFromSourceColor,
-  applyTheme,
-} from "@material/material-color-utilities";
-import customColors from "./custom-colors.json";
+import { argbFromHex, themeFromSourceColor, applyTheme } from "@material/material-color-utilities";
+import customColors from "./custom-colors.yaml";
 import { isDark } from "./dark-mode";
 import { isHexColor, rgbFromHex } from "./hex-utilities";
-
 
 function apply(target: HTMLStyleElement, color: string, dark: boolean) {
   // Create a theme.
@@ -23,11 +18,9 @@ function apply(target: HTMLStyleElement, color: string, dark: boolean) {
     .map((colorSet) => {
       const [key, value] = colorSet.split(":");
 
-      return value
-        ? { key, value: rgbFromHex(value) }
-        : { key: null, value: null };
+      return value ? { key, value: rgbFromHex(value) } : { key: null, value: null };
     })
-    .map(({ key, value }) => (value ? `${key}: ${value}` : ""))
+    .map(({ key, value }) => (value ? `${key.replace("md-sys", "vmu")}: ${value}` : ""))
     .join(";\n");
 
   /**
@@ -45,10 +38,7 @@ function apply(target: HTMLStyleElement, color: string, dark: boolean) {
  * @param color The color that our pallette will be based on
  */
 export default function (color: string): void {
-  if (!isHexColor(color))
-    throw new Error(
-      "Invalid HEX color. Please use a valid HEX (eg. #12F349) color."
-    );
+  if (!isHexColor(color)) throw new Error("Invalid HEX color. Please use a valid HEX (eg. #12F349) color.");
 
   const style = document.createElement("style");
 

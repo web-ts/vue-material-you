@@ -1,0 +1,22 @@
+// Vitest Snapshot v1
+
+exports[`messages > should have defaults 1`] = `
+{
+  "dialog": {
+    "actions": {
+      "cancel": "Cancel",
+    },
+  },
+}
+`;
+
+exports[`messages > should merge messages 1`] = `
+{
+  "dialog": {
+    "actions": {
+      "cancel": "Cancel",
+    },
+    "testMessage": "Test Message",
+  },
+}
+`;

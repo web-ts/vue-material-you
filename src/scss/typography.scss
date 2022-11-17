@@ -1,96 +1,104 @@
-.md-text-body-small {
+@use "colors" as *;
+
+.vmu-text-body-small {
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.4px;
 }
 
-.md-text-body-medium {
+.vmu-text-body-medium {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.25px;
 }
 
-.md-text-body-large {
+.vmu-text-body-large {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   letter-spacing: 0.5px;
 }
 
-.md-text-label-small {
+.vmu-text-label-small {
   font-weight: 500;
   font-size: 11px;
   line-height: 16px;
   letter-spacing: 0.5px;
 }
 
-.md-text-label-medium {
+.vmu-text-label-medium {
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.5px;
 }
 
-.md-text-label-large {
+.vmu-text-label-large {
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.1px;
 }
 
-.md-text-title-small {
+.vmu-text-title-small {
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.1px;
 }
 
-.md-text-title-medium {
+.vmu-text-title-medium {
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
   letter-spacing: 0.1px;
 }
 
-.md-text-title-large {
+.vmu-text-title-large {
   font-weight: 400;
   font-size: 22px;
   line-height: 28px;
 }
 
-.md-text-headline-small {
+.vmu-text-headline-small {
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
 }
-.md-text-headline-medium {
+.vmu-text-headline-medium {
   font-weight: 400;
   font-size: 28px;
   line-height: 36px;
 }
 
-.md-text-headline-large {
+.vmu-text-headline-large {
   font-weight: 400;
   font-size: 32px;
   line-height: 40px;
 }
 
-.md-text-display-small {
+.vmu-text-display-small {
   font-weight: 400;
   font-size: 36px;
   line-height: 44px;
 }
 
-.md-text-display-medium {
+.vmu-text-display-medium {
   font-weight: 400;
   font-size: 45px;
   line-height: 52px;
 }
 
-.md-text-display-large {
+.vmu-text-display-large {
   font-weight: 400;
   font-size: 57px;
   line-height: 64px;
+}
+
+@each $name, $color in $allColors {
+  .vmu-text-#{$name} {
+    color: rgba($color, var(--vmu-color-opacity));
+  }
 }

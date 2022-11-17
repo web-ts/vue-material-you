@@ -6,7 +6,7 @@ import useModel from ".";
 
 const component = defineComponent({
   props: {
-    modelValue: prop<string>(),
+    modelValue: prop<string>()
   },
   emits: { "update:modelValue": emit<string>() },
   setup(props, { emit }) {
@@ -15,9 +15,10 @@ const component = defineComponent({
     model.value = "test";
 
     return {
-      model,
+      model
     };
   },
+  template: "<div></div>"
 });
 
 describe("use-model", () => {

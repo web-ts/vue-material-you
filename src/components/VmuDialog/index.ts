@@ -1,115 +1,119 @@
 import useModel from "@/composables/use-model";
-import useWindowDimensions from "@/composables/use-window-dimensions";
 import emit from "@/utilities/emit";
 import prop from "@/utilities/prop";
-import scss from "./index.module.scss";
-import { renderSlot, StyleValue, Teleport, Transition } from "vue";
-import VmuButton from "../VmuButton";
+import { StyleValue } from "vue";
 import useId from "@/composables/use-id";
-import VmuIcon from "../VmuIcon";
 import useDialog from "../../composables/use-dialog";
+import Scrim from "../Scrim";
+import vModel from "@/utilities/v-model";
+import DialogTitle from "./DialogTitle";
+import DialogDescription from "./DialogDescription";
+import DialogIcon from "./DialogIcon";
+import { DialogAction } from "./types";
+import DialogActions from "./DialogActions";
+import DialogContent from "./DialogContent";
+import { getMessage } from "@/messages";
+import DialogFullscreenContent from "./DialogFullscreenContent";
+import DialogFullscreenHeader from "./DialogFullscreenHeader";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
   name: "VmDialog",
   inheritAttrs: false,
   props: {
     id: prop<string>(),
     zIndex: prop<number>(100),
     modelValue: prop<boolean>({ default: undefined, type: Boolean }),
-    fullScreen: prop<boolean>({ default: true, type: Boolean }),
+    fullscreen: prop<boolean>({ default: false, type: Boolean }),
     style: prop<StyleValue>(),
     title: prop<string>(),
     description: prop<string>(),
     icon: prop<string>(),
+    showCloseAction: prop<boolean>({ default: false, type: Boolean }),
+    actions: prop<Array<DialogAction>>(() => [])
   },
   emits: {
-    "update:modelValue": emit<boolean>(),
+    "update:modelValue": emit<boolean>()
   },
   setup(props, { emit, attrs, slots }) {
-    const { height } = useWindowDimensions();
     const id = useId(props);
     const open = useModel(props, emit);
     const { isLast } = useDialog(id, open);
-    const style = computed(() => [
-      props.style,
-      {
-        top: 0,
-        left: 0,
-        position: "fixed",
-        width: "100vw",
-        height: `${height.value}px`,
-        zIndex: props.zIndex,
-      },
-    ]);
+
+    // #region animation
+
+    const scrimOpen = ref(false);
+    const contentOpen = ref(false);
+
+    // Check if it's open by default
+    if (open.value) {
+      scrimOpen.value = true;
+      contentOpen.value = true;
+    }
+    watch(open, (newValue) => {
+      if (newValue) scrimOpen.value = true;
+      else contentOpen.value = false;
+    });
+
+    async function onScrimOpen() {
+      contentOpen.value = true;
+    }
+
+    async function onContentClose() {
+      await nextTick();
+      scrimOpen.value = false;
+    }
+
+    // #endregion
+
+    const actions = computed(() => {
+      if (!props.showCloseAction) return props.actions;
+
+      const defaultCloseAction = {
+        name: getMessage("dialog.actions.cancel").value,
+        handler: () => (open.value = false)
+      };
+
+      return [...props.actions, defaultCloseAction];
+    });
 
     return () =>
       h(
-        Teleport,
-        { to: "body" },
-        h(
-          Transition,
-          { name: "fade" },
-          () =>
-            open.value &&
-            h(
-              "div",
-              {
-                class: scss.dialog,
-                ...attrs,
-                id: id.value,
-                style: style.value,
-                "aria-hidden": !isLast.value,
-                tabindex: !isLast.value ? -1 : undefined,
-                role: "dialog",
-                "aria-modal": "true",
-                "aria-labelledby": `${id.value}_title`,
-                "aria-describedby": `${id.value}_description`,
-              },
-              h(Transition, { name: "menu", appear: true }, () =>
-                h("div", { class: scss.contents }, [
-                  props.icon &&
-                    h(
-                      "div",
-                      { class: scss.icon },
-                      h(VmuIcon, {
-                        icon: props.icon,
-                        props: { width: 24, height: 24 },
-                      })
-                    ),
-                  h(
-                    "h1",
-                    {
-                      id: `${id.value}_title`,
-                      class: ["md-text-headline-small", scss.title],
-                      style: { textAlign: props.icon ? "center" : "left" },
-                    },
-                    props.title
-                  ),
-                  h(
-                    "p",
-                    {
-                      id: `${id.value}_description`,
-                      class: "md-text-body-medium",
-                    },
-                    props.description
-                  ),
-                  renderSlot(slots, "default"),
-                  h("div", { class: scss.actions }, [
-                    h(
-                      VmuButton,
-                      { type: "text", onClick: () => (open.value = false) },
-                      "Cancel"
-                    ),
-                    h(
-                      VmuButton,
-                      { type: "text", onClick: () => (open.value = false) },
-                      "Save"
-                    ),
-                  ]),
-                ])
-              )
-            )
-        )
+        Scrim,
+        {
+          ...attrs,
+          ...vModel(scrimOpen),
+          id: id.value,
+          isLast: isLast.value,
+          onOpen: onScrimOpen
+        },
+        // Content Transition
+        () =>
+          (!props.fullscreen
+            ? h(DialogContent, { isOpen: contentOpen.value, onClose: onContentClose }, () => [
+                h(DialogIcon, { icon: props.icon }),
+                h(DialogTitle, {
+                  dialogId: id.value,
+                  title: props.title,
+                  icon: props.icon
+                }),
+                h(DialogDescription, {
+                  dialogId: id.value,
+                  description: props.description
+                }),
+                slots.default && slots.default(),
+                h(DialogActions, {
+                  actions: actions.value
+                })
+              ])
+            : h(DialogFullscreenContent, { isOpen: contentOpen.value, onClose: onContentClose }, () => [
+                h(DialogFullscreenHeader, {
+                  dialogId: id.value,
+                  title: props.title,
+                  actions: actions.value,
+                  onClose: ()=> (open.value = false)
+                }),
+                slots.default && slots.default()
+              ]))
       );
-  },
+  }
 });

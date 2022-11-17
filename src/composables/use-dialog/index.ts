@@ -1,17 +1,23 @@
+import { getConfiguration } from "@/configuration";
+import GenericError from "@/errors/GenericError";
 import { ComputedRef, Ref, WritableComputedRef } from "vue";
 
 export const dialogs = ref<Array<string>>([]);
 
 export default function (id: ComputedRef<string>, open: WritableComputedRef<boolean> | Ref<boolean>) {
+  const config = getConfiguration();
 
   function addToDialogs() {
     if (!dialogs.value.find((dialog) => dialog === id.value)) {
-      const app = document.getElementById("app");
+      const app = document.getElementById(config.mountedOn);
 
-      if (app) {
-        app.inert = true;
-        app.ariaHidden = "true";
+      if (!app) {
+        throw new GenericError(`Could not find element with id "${config.mountedOn}"`);
       }
+
+      app.inert = true;
+      app.ariaHidden = "true";
+
       dialogs.value.push(id.value);
     }
   }
