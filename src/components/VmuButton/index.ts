@@ -5,7 +5,7 @@ import type { ButtonType } from "./types";
 import useRipple from "@/composables/use-ripple";
 import VmuIcon from "../VmuIcon";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
   name: "VmButton",
   props: {
     type: prop<ButtonType>("filled"),

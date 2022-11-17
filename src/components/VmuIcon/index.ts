@@ -1,7 +1,7 @@
 import prop from "@/utilities/prop";
 import { getConfiguration } from "@/configuration";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
   name: "VmIcon",
   props: {
     icon: prop<string | null>(null),

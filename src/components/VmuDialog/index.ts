@@ -16,7 +16,7 @@ import { getMessage } from "@/messages";
 import DialogFullscreenContent from "./DialogFullscreenContent";
 import DialogFullscreenHeader from "./DialogFullscreenHeader";
 
-export default defineComponent({
+export default /* @__PURE__ */ defineComponent({
   name: "VmDialog",
   inheritAttrs: false,
   props: {
