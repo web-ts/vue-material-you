@@ -9,9 +9,9 @@ import { getMessage } from "@/messages";
 export default defineComponent({
   name: "DialogFullscreenHeader",
   props: {
-    dialogId: prop<string>(),
-    title: prop<string>(),
-    actions: prop<Array<DialogAction>>(() => [])
+    dialogId: prop.generic<string>(),
+    title: prop.generic<string>(),
+    actions: prop.generic<Array<DialogAction>>([])
   },
   emits: {
     close: emit()

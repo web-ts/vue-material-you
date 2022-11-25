@@ -4,8 +4,8 @@ import { getConfiguration } from "@/configuration";
 export default /* @__PURE__ */ defineComponent({
   name: "VmIcon",
   props: {
-    icon: prop<string | null>(null),
-    props: prop<Record<string, unknown>>(() => ({}))
+    icon: prop.generic<string>(),
+    props: prop.generic<Record<string, unknown>>({})
   },
   setup(props, { slots }) {
     const { icon } = getConfiguration();

@@ -7,22 +7,17 @@ import scss from "./index.module.scss";
 export default defineComponent({
   name: "Scrim",
   props: {
-    modelValue: prop<boolean>({ default: false, type: Boolean }),
-    zIndex: prop<number>(100),
-    style: prop<StyleValue>(),
-    id: prop<string>(),
-    isLast: prop<boolean>({ default: false, type: Boolean })
+    open: prop.boolean(false),
+    zIndex: prop.generic(100),
+    style: prop.generic<StyleValue>(),
+    id: prop.generic<string>(),
+    isLast: prop.boolean(false)
   },
   emits: {
     "update:modelValue": emit<boolean>(),
     open: emit()
   },
   setup(props, { emit, slots, attrs }) {
-    const model = computed({
-      get: () => props.modelValue,
-      set: (value) => emit("update:modelValue", value)
-    });
-
     async function onBeforeEnter() {
       await nextTick();
       emit("open");
@@ -65,7 +60,7 @@ export default defineComponent({
             name: "vmu-scrim",
             onBeforeEnter
           },
-          () => model.value && h("div", { class: scss.scrim, ...scrimProps.value }, slots.default && slots.default())
+          () => props.open && h("div", { class: scss.scrim, ...scrimProps.value }, slots.default && slots.default())
         )
       );
   }

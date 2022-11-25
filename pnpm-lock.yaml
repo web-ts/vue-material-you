@@ -7,6 +7,8 @@ specifiers:
   '@types/node': ^18.11.9
   '@vitest/coverage-c8': ^0.25.1
   '@vitest/ui': ^0.25.1
+  '@vue/compiler-dom': ^3.2.45
+  '@vue/devtools-api': ^6.4.5
   '@vue/test-utils': ^2.2.1
   '@web-typescript/eslint-config': ^0.0.2
   eslint: ^8.27.0
@@ -32,6 +34,8 @@ devDependencies:
   '@types/node': 18.11.9
   '@vitest/coverage-c8': 0.25.1_cctyao5kcecaehzi4atfgr7esa
   '@vitest/ui': 0.25.1
+  '@vue/compiler-dom': 3.2.45
+  '@vue/devtools-api': 6.4.5
   '@vue/test-utils': 2.2.1_vue@3.2.43
   '@web-typescript/eslint-config': 0.0.2_typescript@4.8.4
   eslint: 8.27.0
@@ -548,11 +552,27 @@ packages:
       source-map: 0.6.1
     dev: true
 
+  /@vue/compiler-core/3.2.45:
+    resolution: {integrity: sha512-rcMj7H+PYe5wBV3iYeUgbCglC+pbpN8hBLTJvRiK2eKQiWqu+fG9F+8sW99JdL4LQi7Re178UOxn09puSXvn4A==}
+    dependencies:
+      '@babel/parser': 7.20.3
+      '@vue/shared': 3.2.45
+      estree-walker: 2.0.2
+      source-map: 0.6.1
+    dev: true
+
   /@vue/compiler-dom/3.2.43:
     resolution: {integrity: sha512-LIhLMArN4hkRyECQSUB56z/wsF2JdGMDsG06e3ZAJAaNcGaMQLLzhF667hklouTZeHbWVCe8c7qkDPVs21Zu9Q==}
     dependencies:
       '@vue/compiler-core': 3.2.43
       '@vue/shared': 3.2.43
+    dev: true
+
+  /@vue/compiler-dom/3.2.45:
+    resolution: {integrity: sha512-tyYeUEuKqqZO137WrZkpwfPCdiiIeXYCcJ8L4gWz9vqaxzIQRccTSwSWZ/Axx5YR2z+LvpUbmPNXxuBU45lyRw==}
+    dependencies:
+      '@vue/compiler-core': 3.2.45
+      '@vue/shared': 3.2.45
     dev: true
 
   /@vue/compiler-sfc/3.2.43:
@@ -624,6 +644,10 @@ packages:
 
   /@vue/shared/3.2.43:
     resolution: {integrity: sha512-zPhXJ0evblbcI3qOwUxliOoH90ecp2J1171RFrHXNC58EzzxXGPJ/X0FyIvuC9SvZNe8wpX4OcWhblPDSwT8Rw==}
+    dev: true
+
+  /@vue/shared/3.2.45:
+    resolution: {integrity: sha512-Ewzq5Yhimg7pSztDV+RH1UDKBzmtqieXQlpTVm2AwraoRL/Rks96mvd8Vgi7Lj+h+TH8dv7mXD3FRZR3TUvbSg==}
     dev: true
 
   /@vue/test-utils/2.2.1_vue@3.2.43:

@@ -23,7 +23,12 @@ function scssResolver(args: Array<string>, filename: string) {
 }
 
 export default defineConfig({
+  define:{
+    VERSION: JSON.stringify(process.env.npm_package_version),
+    __VUE_PROD_DEVTOOLS__: false
+  },
   test: {
+    globals: true,
     include: ["./src/**/*.spec.ts"],
     environment: "happy-dom",
     deps: {

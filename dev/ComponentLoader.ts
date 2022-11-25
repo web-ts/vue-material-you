@@ -9,7 +9,7 @@ interface LoaderData {
 export default defineComponent({
   name: "ComponentLoader",
   props: {
-    data: prop<LoaderData>()
+    data: prop.required<LoaderData>()
   },
 
   setup(props) {

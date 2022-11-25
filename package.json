@@ -8,7 +8,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "test:watch:coverage": "vitest --coverage"
   },
   "files": [
     "dist"
@@ -38,6 +39,8 @@
     "@types/node": "^18.11.9",
     "@vitest/coverage-c8": "^0.25.1",
     "@vitest/ui": "^0.25.1",
+    "@vue/compiler-dom": "^3.2.45",
+    "@vue/devtools-api": "^6.4.5",
     "@vue/test-utils": "^2.2.1",
     "@web-typescript/eslint-config": "^0.0.2",
     "eslint": "^8.27.0",

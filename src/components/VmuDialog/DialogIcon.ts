@@ -5,7 +5,7 @@ import scss from "./index.module.scss";
 export default defineComponent({
   name: "DialogIcon",
   props: {
-    icon: prop<string>()
+    icon: prop.generic<string>()
   },
   setup(props) {
     return () =>
