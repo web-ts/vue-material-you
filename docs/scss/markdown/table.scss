@@ -1,0 +1,22 @@
+.markdown-body {
+  table {
+    margin: 16px auto;
+    width: 100%;
+    display: inline-block;
+    overflow: auto;
+    th {
+      border-bottom: 1px solid rgb(var(--vmu-color-on-surface), 0.2);
+      padding: 4px;
+    }
+    td {
+      padding: 8px;
+    }
+
+    tr {
+      &:nth-child(2n) {
+        background-color: rgb(var(--vmu-color-surface-variant), 0.3);
+        color: rgb(var(--vmu-color-on-surface-variant));
+      }
+    }
+  }
+}

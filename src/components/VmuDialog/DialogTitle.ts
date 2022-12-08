@@ -4,9 +4,9 @@ import scss from "./index.module.scss";
 export default defineComponent({
   name: "DialogTitle",
   props: {
-    dialogId: prop<string>(),
-    title: prop<string>(),
-    icon: prop<string>()
+    dialogId: prop.generic<string>(),
+    title: prop.generic<string>(),
+    icon: prop.generic<string>()
   },
   setup(props) {
     return () =>

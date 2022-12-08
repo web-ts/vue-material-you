@@ -1,0 +1,105 @@
+@use "@/scss/colors" as *;
+@use "@/scss/variables" as *;
+
+.container {
+  box-shadow: 0 0 0 1px rgb($outline);
+  position: relative;
+  transition: box-shadow 0.2s;
+  border-radius: 4px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px rgb($primary);
+  }
+
+  &_error {
+    box-shadow: 0 0 0 1px rgb($error);
+
+    &:focus-within {
+      box-shadow: 0 0 0 2px rgb($error);
+    }
+  }
+
+  input {
+    color: rgb($on-surface);
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &_leadingIcon {
+    padding-left: 0px;
+  }
+  &_trailingIcon {
+    padding-right: 0px;
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  color: rgb($on-surface-variant);
+
+  &_error {
+    color: rgb($error);
+  }
+
+  &_leading {
+    margin-left: 12px;
+    margin-right: 16px;
+  }
+  &_trailing {
+    margin-left: 16px;
+    margin-right: 12px;
+  }
+}
+
+.label {
+  color: rgb($on-surface-variant);
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  transition: all 0.2s, background-color 0s;
+  transform: translate3d(0, -50%, 0);
+  background-color: rgb(var(--vmu-surface));
+  padding: 0 4px;
+  left: 16px;
+  top: 50%;
+  &_populated {
+    color: rgb($primary);
+    top: 0;
+    left: 16px;
+  }
+  &_notEmpty {
+    top: 0;
+    left: 16px;
+  }
+
+  &_leadingIcon:not(.label_populated, .label_notEmpty) {
+    left: 52px;
+  }
+
+  &_error {
+    color: rgb($error);
+  }
+}
+
+.supportingText {
+  color: rgb($on-surface-variant);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 4px;
+
+  &_error {
+    color: rgb($error);
+  }
+}

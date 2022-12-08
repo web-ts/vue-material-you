@@ -6,7 +6,7 @@ import { Transition } from "vue";
 export default defineComponent({
   name: "DialogContent",
   props: {
-    isOpen: prop<boolean>({ default: false, type: Boolean })
+    isOpen: prop.boolean(false)
   },
   emits: {
     close: emit()

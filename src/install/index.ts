@@ -1,4 +1,5 @@
 import { dialogs } from "@/composables/use-dialog";
+import devtools from "@/devtools";
 import type { App } from "vue";
 import color from "../color";
 import { setIconData, setMountedOn } from "../configuration";
@@ -17,7 +18,13 @@ export default function (options: InstallOptions) {
   function install(app: App) {
     color(options.color);
 
-    setMountedOn(options.mountedOn);
+    const interval = setInterval(() => {
+      if (app._container) {
+        clearInterval(interval);
+        setMountedOn(app._container);
+      }
+    }, 1);
+
     // Add a watcher for the dialogs array
     watch(dialogs, (newValue) => {
       if (!app._container || newValue.length > 0) return;
@@ -29,6 +36,10 @@ export default function (options: InstallOptions) {
       const { component, key, defaults } = options.icon;
 
       setIconData(component, key, defaults);
+    }
+
+    if (process.env.NODE_ENV === "development" || __VUE_PROD_DEVTOOLS__) {
+      devtools(app);
     }
   }
 

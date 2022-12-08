@@ -6,7 +6,7 @@ import useModel from ".";
 
 const component = defineComponent({
   props: {
-    modelValue: prop<string>()
+    modelValue: prop.required<string>()
   },
   emits: { "update:modelValue": emit<string>() },
   setup(props, { emit }) {

@@ -5,7 +5,6 @@ import { StyleValue } from "vue";
 import useId from "@/composables/use-id";
 import useDialog from "../../composables/use-dialog";
 import Scrim from "../Scrim";
-import vModel from "@/utilities/v-model";
 import DialogTitle from "./DialogTitle";
 import DialogDescription from "./DialogDescription";
 import DialogIcon from "./DialogIcon";
@@ -20,16 +19,16 @@ export default /* @__PURE__ */ defineComponent({
   name: "VmDialog",
   inheritAttrs: false,
   props: {
-    id: prop<string>(),
-    zIndex: prop<number>(100),
-    modelValue: prop<boolean>({ default: undefined, type: Boolean }),
-    fullscreen: prop<boolean>({ default: false, type: Boolean }),
-    style: prop<StyleValue>(),
-    title: prop<string>(),
-    description: prop<string>(),
-    icon: prop<string>(),
-    showCloseAction: prop<boolean>({ default: false, type: Boolean }),
-    actions: prop<Array<DialogAction>>(() => [])
+    id: prop.generic<string>(),
+    zIndex: prop.generic(100),
+    modelValue: prop.boolean(false),
+    fullscreen: prop.boolean(false),
+    style: prop.generic<StyleValue>(),
+    title: prop.generic<string>(),
+    description: prop.generic<string>(),
+    icon: prop.generic<string>(),
+    showCloseAction: prop.boolean(false),
+    actions: prop.generic<Array<DialogAction>>([])
   },
   emits: {
     "update:modelValue": emit<boolean>()
@@ -81,7 +80,7 @@ export default /* @__PURE__ */ defineComponent({
         Scrim,
         {
           ...attrs,
-          ...vModel(scrimOpen),
+          open: scrimOpen.value,
           id: id.value,
           isLast: isLast.value,
           onOpen: onScrimOpen
@@ -110,7 +109,7 @@ export default /* @__PURE__ */ defineComponent({
                   dialogId: id.value,
                   title: props.title,
                   actions: actions.value,
-                  onClose: ()=> (open.value = false)
+                  onClose: () => (open.value = false)
                 }),
                 slots.default && slots.default()
               ]))

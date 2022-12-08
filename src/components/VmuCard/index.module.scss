@@ -1,0 +1,33 @@
+@use "@/scss/colors" as *;
+@use "@/scss/variables" as *;
+
+@use "@/scss/elevation";
+
+.card {
+  border-radius: 12px;
+  padding: 16px;
+  color: rgb($on-surface);
+  transition: box-shadow 0.2s;
+  &_elevated {
+    background-color: rgb($surface);
+    box-shadow: elevation.$e1;
+    &:hover {
+      box-shadow: elevation.$e2;
+    }
+  }
+
+  &_filled {
+    background-color: rgb($surface-variant);
+    &:hover {
+      box-shadow: elevation.$e1;
+    }
+  }
+
+  &_outlined {
+    background-color: rgb($surface);
+    box-shadow: 0 0 0 1px rgb($outline), 0 0 0 0 rgb(0, 0, 0);
+    &:hover {
+      box-shadow: 0 0 0 1px rgb($outline), elevation.$e1;
+    }
+  }
+}

@@ -1,14 +1,18 @@
 {
   "name": "vue-material-you",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Material design 3 UI framework for Vue 3",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:ui": "vitest --ui",
-    "test:coverage": "vitest run --coverage"
+    "dev:playground": "cross-env ENV=playground vite",
+    "dev:docs": "cross-env ENV=docs vite",
+    "build": "cross-env ENV=prod vite build",
+    "build:docs": "cross-env ENV=docs vite build",
+    "serve:docs": "cross-env ENV=docs vite preview",
+    "test": "cross-env ENV=test vitest run",
+    "test:watch": "cross-env ENV=test vitest",
+    "test:ui": "cross-env ENV=test vitest --ui",
+    "test:coverage": "cross-env ENV=test vitest run --coverage",
+    "test:watch:coverage": "cross-env ENV=test vitest --coverage"
   },
   "files": [
     "dist"
@@ -28,7 +32,8 @@
   "author": "Web-TS",
   "license": "MIT",
   "peerDependencies": {
-    "vue": "^3.2.43"
+    "vue": "^3.2.43",
+    "vue-router": "^4.1.6"
   },
   "packageManager": "pnpm@7.15.0",
   "devDependencies": {
@@ -36,12 +41,18 @@
     "@material/material-color-utilities": "^0.2.0",
     "@modyfi/vite-plugin-yaml": "^1.0.3",
     "@types/node": "^18.11.9",
+    "@vitejs/plugin-vue": "^3.2.0",
     "@vitest/coverage-c8": "^0.25.1",
     "@vitest/ui": "^0.25.1",
+    "@vue/compiler-dom": "^3.2.45",
+    "@vue/devtools-api": "^6.4.5",
     "@vue/test-utils": "^2.2.1",
     "@web-typescript/eslint-config": "^0.0.2",
+    "@yankeeinlondon/code-builder": "^1.0.7",
+    "cross-env": "^7.0.3",
     "eslint": "^8.27.0",
     "happy-dom": "^7.6.7",
+    "markdown-it-prism": "^2.3.0",
     "postcss": "^8.4.18",
     "prettier": "^2.7.1",
     "sass": "^1.56.1",
@@ -50,10 +61,16 @@
     "vite": "^3.2.3",
     "vite-plugin-dts": "^1.7.0",
     "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-md": "^0.20.4",
     "vite-plugin-raw": "^1.0.3",
     "vite-plugin-sass-dts": "^1.1.44",
+    "vite-plugin-windicss": "^1.8.8",
     "vitest": "^0.25.1",
     "vue": "^3.2.43",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "windicss": "^3.5.6"
+  },
+  "resolutions": {
+    "brilliant-errors": "0.6.0"
   }
 }

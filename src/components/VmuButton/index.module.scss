@@ -72,8 +72,8 @@
   }
   &:disabled {
     box-shadow: none;
-    background-color: rgba($disabled, 0.12);
-    color: rgba($on-surface-variant, 0.38);
+    background-color: rgba($on-surface, 0.12);
+    color: rgba($on-surface, 0.38);
   }
 }
 

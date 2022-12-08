@@ -6,7 +6,7 @@ import scss from "./index.module.scss";
 export default defineComponent({
   name: "DialogActions",
   props: {
-    actions: prop<Array<DialogAction>>(() => [])
+    actions: prop.generic<Array<DialogAction>>([])
   },
   setup(props) {
     return () =>

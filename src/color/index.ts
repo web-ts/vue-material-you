@@ -40,7 +40,9 @@ function apply(target: HTMLStyleElement, color: string, dark: boolean) {
 export default function (color: string): void {
   if (!isHexColor(color)) throw new Error("Invalid HEX color. Please use a valid HEX (eg. #12F349) color.");
 
-  const style = document.createElement("style");
+  const style = (document.getElementById("vmu-colors") as HTMLStyleElement) ?? document.createElement("style");
+
+  style.id = "vmu-colors";
 
   apply(style, color, isDark.value);
   document.head.appendChild(style);
