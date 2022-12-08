@@ -11,7 +11,7 @@ export default defineConfig({
   },
   test: {
     globals: true,
-    include: ["../src/**/*.spec.ts"],
+    include: ["./src/**/*.spec.ts"],
     environment: "happy-dom",
     coverage: {
       lines: 80,

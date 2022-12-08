@@ -1,6 +1,8 @@
+/* eslint-disable vue/one-component-per-file */
 import { expect, describe, it } from "vitest";
 import { mount } from "@vue/test-utils";
 import useDialog from ".";
+import install from "@/install";
 
 const component = defineComponent({
   setup() {
@@ -14,14 +16,24 @@ const component = defineComponent({
     return {
       dialogs,
       isLast,
-      model,
+      model
     };
-  },
+  }
 });
+
+const config = {
+  color: "#42b883",
+  icon: {
+    component: defineComponent({}),
+    key: "icon",
+    defaults: { width: "18", height: "18" }
+  }
+};
 
 describe("use-dialog", () => {
   document.body.innerHTML = "<div id='app'></div>";
-  const wrapper = mount(component);
+  const vmu = install(config);
+  const wrapper = mount(component, { attachTo: "body", global: { plugins: [vmu] } });
 
   it("should add it to the list", async () => {
     wrapper.vm.model = true;

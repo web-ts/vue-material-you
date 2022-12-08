@@ -21,7 +21,7 @@ const child = defineComponent({
 const component = defineComponent({
   components: { child },
   setup() {
-    const form = useForm({id: "test-form"});
+    const form = useForm({ id: "test-form" }, () => 0);
     const child = ref();
 
     return {
@@ -33,14 +33,6 @@ const component = defineComponent({
 });
 
 describe("use-form", () => {
-  // it("should register an input", () => {
-  //   const { registerInput, state } = useForm();
-
-  //   registerInput("test-input-name", "test-value");
-
-  //   expect(state["test-input-name"]).toBe("test-value");
-  // });
-
   it("should provide the registerInput method", () => {
     const wrapper = mount(component);
 
