@@ -17,9 +17,19 @@
     "skipLibCheck": true,
     "types": ["node", "vite/client", "@modyfi/vite-plugin-yaml/modules"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@docs/*": ["./docs/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "dev/**/*.ts", "dev/**/*.d.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "docs/**/*.ts",
+    "docs/**/*.d.ts",
+    "docs/**/*.vue",
+    "playground/**/*.ts",
+    "playground/**/*.d.ts",
+    "playground/**/*.vue"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

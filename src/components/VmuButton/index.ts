@@ -12,7 +12,8 @@ export default /* @__PURE__ */ defineComponent({
     icon: prop.generic<string | null>(null),
     submit: prop.boolean(),
     reset: prop.boolean(true),
-    disabled: prop.boolean()
+    disabled: prop.boolean(),
+    href: prop.generic<string>(),
   },
   setup(props, { slots }) {
     const classList = computed(() => [
@@ -32,8 +33,9 @@ export default /* @__PURE__ */ defineComponent({
 
     return () =>
       h(
-        "button",
+        props.href ? "a" : "button",
         {
+          href: props.href,
           type: nativeType.value,
           disabled: props.disabled,
           class: classList.value,

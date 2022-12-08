@@ -18,7 +18,13 @@ export default function (options: InstallOptions) {
   function install(app: App) {
     color(options.color);
 
-    setMountedOn(options.mountedOn);
+    const interval = setInterval(() => {
+      if (app._container) {
+        clearInterval(interval);
+        setMountedOn(app._container);
+      }
+    }, 1);
+
     // Add a watcher for the dialogs array
     watch(dialogs, (newValue) => {
       if (!app._container || newValue.length > 0) return;

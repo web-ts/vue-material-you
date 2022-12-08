@@ -9,7 +9,7 @@ export default function (id: ComputedRef<string>, open: WritableComputedRef<bool
 
   function addToDialogs() {
     if (!dialogs.value.find((dialog) => dialog === id.value)) {
-      const app = document.getElementById(config.mountedOn);
+      const app = config.mountedOn;
 
       if (!app) {
         throw new GenericError(`Could not find element with id "${config.mountedOn}"`);

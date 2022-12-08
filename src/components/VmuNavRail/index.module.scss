@@ -1,0 +1,99 @@
+@use "@/scss/colors" as *;
+
+.rail {
+  background-color: rgb($surface);
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 8;
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    margin-top: 20px;
+    gap: 12px;
+  }
+}
+
+.item {
+  color: rgb($on-surface);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 56px;
+  width: 80px;
+  border-radius: 16px;
+  cursor: pointer;
+  position: relative;
+  gap: 4px;
+
+  &:focus-visible {
+    outline: 2px solid rgb($on-surface);
+    outline-offset: -2px;
+  }
+
+  &:hover .iconWrapper {
+    background-color: rgb($surface-variant);
+  }
+}
+
+.iconWrapper {
+  transition-duration: 0.2s;
+  transition-property: background-color, color;
+  transition-timing-function: ease-in-out;
+  width: 56px;
+  margin-left: 12px;
+  margin-right: 12px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 16px;
+}
+
+.iconWrapper_selected {
+  color: rgb($on-secondary);
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background-color: rgb($secondary);
+    animation: scale 0.2s ease-in-out;
+  }
+}
+
+.icon {
+  position: absolute;
+}
+
+@keyframes scale {
+  0% {
+    transform: scaleX(0.5);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.label {
+  margin-left: 4px;
+  margin-right: 4px;
+}
