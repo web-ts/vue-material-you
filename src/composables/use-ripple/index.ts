@@ -80,7 +80,7 @@ export default function () {
     if (!target) return;
     const { width, height } = target.getBoundingClientRect();
     const end = new Date();
-    const elapsed = Math.max(end.getMilliseconds() - start.getMilliseconds(), 0);
+    const elapsed = Math.max(end?.getMilliseconds() - start?.getMilliseconds(), 0);
 
     const timeLeft = 200 - elapsed;
 

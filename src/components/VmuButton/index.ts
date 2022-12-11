@@ -14,13 +14,15 @@ export default /* @__PURE__ */ defineComponent({
     reset: prop.boolean(true),
     disabled: prop.boolean(),
     href: prop.generic<string>(),
+    size: prop.generic<"large" | "medium" | "small">("large")
   },
   setup(props, { slots }) {
     const classList = computed(() => [
-      "vmu-text-label-large vmu-ripple",
+      "vmu-ripple",
       scss.button,
-      props.icon ? scss["padding-icon"] : scss.padding,
-      scss[props.type]
+      props.icon ? scss[`button_${props.size}_icon`] : scss[`button_${props.size}`],
+      scss[props.type],
+      `vmu-text-label-${props.size}`
     ]);
 
     const { rippleStyleObject, events } = useRipple();

@@ -1,11 +1,22 @@
 import { argbFromHex, themeFromSourceColor, applyTheme } from "@material/material-color-utilities";
 import customColors from "./custom-colors.yaml";
+import messages from "./messages.yaml";
 import { isDark } from "./dark-mode";
 import { isHexColor, rgbFromHex } from "./hex-utilities";
 
-function apply(target: HTMLStyleElement, color: string, dark: boolean) {
+const currentColor = ref("#000000");
+
+/**
+ * Apply the theme to the document
+ * @param dark Whether or not the theme should be dark
+ */
+function apply(dark: boolean) {
+  const target = document.getElementById("vmu-colors") as HTMLStyleElement;
+
+  if (!target) throw new Error(messages.NO_TARGET_ELEMENT);
+
   // Create a theme.
-  const theme = themeFromSourceColor(argbFromHex(color));
+  const theme = themeFromSourceColor(argbFromHex(currentColor.value));
   // Create a dummy element to apply the theme to. This is done due to the limitations of 'applyTheme'.
   const dummy = document.createElement("div");
 
@@ -33,20 +44,40 @@ function apply(target: HTMLStyleElement, color: string, dark: boolean) {
   target.innerHTML = `* {\n${data}\n${cc}}`;
 }
 
+export function changeColor(color: string) {
+  if (!isHexColor(color)) throw new Error(messages.INVALID_HEX);
+  currentColor.value = color;
+  apply(isDark.value);
+}
+
+export function getColor() {
+  return currentColor.value;
+}
+
+export const color = computed({
+  get: () => currentColor.value,
+  set: (color) => changeColor(color)
+});
+
 /**
  * Initialize the color module and apply the theme to the body of the document
  * @param color The color that our pallette will be based on
  */
 export default function (color: string): void {
-  if (!isHexColor(color)) throw new Error("Invalid HEX color. Please use a valid HEX (eg. #12F349) color.");
+  if (!isHexColor(color)) throw new Error(messages.INVALID_HEX);
+  currentColor.value = color;
+  const target = document.getElementById("vmu-colors") as HTMLStyleElement | null;
 
-  const style = (document.getElementById("vmu-colors") as HTMLStyleElement) ?? document.createElement("style");
+  if (!target) {
+    const style = document.createElement("style");
 
-  style.id = "vmu-colors";
+    style.id = "vmu-colors";
+    document.head.appendChild(style);
+  }
 
-  apply(style, color, isDark.value);
-  document.head.appendChild(style);
+  apply(isDark.value);
+
   watch(isDark, () => {
-    apply(style, color, isDark.value);
+    apply(isDark.value);
   });
 }

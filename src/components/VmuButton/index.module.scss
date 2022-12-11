@@ -3,7 +3,6 @@
 @use "@/scss/elevation";
 
 .button {
-  all: unset;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -48,13 +47,32 @@
       opacity: 0;
     }
   }
+  &_small {
+    padding: 5.5px 16px;
+    height: 30px;
+  }
+  &_small_icon {
+    padding: 5.5px 16px 5.5px 16px;
+    height: 30px;
+  }
+
+  &_medium {
+    padding: 7.5px 20px;
+    height: 35px;
+  }
+  &_medium_icon {
+    padding: 7.5px 20px 7.5px 16px;
+    height: 35px;
+  }
+
+  &_large {
+    padding: 10.5px 24px;
+  }
+  &_large_icon {
+    padding: 10.5px 24px 10.5px 16px;
+  }
 }
-.padding {
-  padding: 10.5px 24px;
-}
-.padding-icon {
-  padding: 10.5px 24px 10.5px  16px;
-}
+
 .filled {
   --background-color: rgb(#{$primary});
   --color: rgb(#{$on-primary});

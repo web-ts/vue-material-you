@@ -26,3 +26,7 @@ export function setDarkMode(mode: DarkModeState) {
   settings.userMode = mode;
 }
 
+export const darkMode = computed({
+  get: () => settings.userMode,
+  set: (mode) => setDarkMode(mode)
+});

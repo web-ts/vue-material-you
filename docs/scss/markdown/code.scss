@@ -14,6 +14,8 @@
   :not(pre) > code {
     background-color: rgb(var(--vmu-color-surface-variant));
     color: rgb(var(--vmu-color-on-surface-variant));
+    word-break: keep-all;
+    white-space: nowrap;
     padding: 2px 4px;
     border-radius: 8px;
     font-weight: 400;

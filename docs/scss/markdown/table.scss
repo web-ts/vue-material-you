@@ -1,22 +1,27 @@
-.markdown-body {
-  table {
-    margin: 16px auto;
-    width: 100%;
-    display: inline-block;
-    overflow: auto;
-    th {
-      border-bottom: 1px solid rgb(var(--vmu-color-on-surface), 0.2);
-      padding: 4px;
-    }
-    td {
-      padding: 8px;
-    }
+.markdown-table {
+  width: 100%;
+  th {
+    border-bottom: 1px solid rgba(var(--vmu-color-on-surface), 0.2);
+    padding: 4px;
+    font-weight: 500;
+  }
 
-    tr {
-      &:nth-child(2n) {
-        background-color: rgb(var(--vmu-color-surface-variant), 0.3);
-        color: rgb(var(--vmu-color-on-surface-variant));
-      }
+  td {
+    padding: 8px;
+    min-width: 100px;
+  }
+
+  tr {
+    &:nth-child(2n) {
+      background-color: rgb(var(--vmu-color-surface-variant), 0.3);
+      color: rgb(var(--vmu-color-on-surface-variant));
     }
+  }
+  &-wrapper {
+    margin: 16px auto;
+    padding: 16px;
+    overflow: auto;
+    border-radius: 8px;
+    border: 1px solid rgba(var(--vmu-color-on-surface), 0.2);
   }
 }

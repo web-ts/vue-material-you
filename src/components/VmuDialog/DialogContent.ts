@@ -6,7 +6,8 @@ import { Transition } from "vue";
 export default defineComponent({
   name: "DialogContent",
   props: {
-    isOpen: prop.boolean(false)
+    isOpen: prop.boolean(false),
+    attributes: prop.generic<Record<string, unknown>>()
   },
   emits: {
     close: emit()
@@ -45,7 +46,12 @@ export default defineComponent({
           props.isOpen &&
           h(
             "div",
-            { ref: dialog, class: [scss.contents, "vmu-text-on-surface"], style: `--vmu-max-height: ${size.value}px` },
+            {
+              ...props.attributes,
+              ref: dialog,
+              class: [scss.contents, "vmu-text-on-surface", props.attributes?.class],
+              style: `--vmu-max-height: ${size.value}px`
+            },
             slots.default && slots.default()
           )
       );

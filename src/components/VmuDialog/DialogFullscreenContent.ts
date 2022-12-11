@@ -6,7 +6,8 @@ import { Transition } from "vue";
 export default defineComponent({
   name: "DialogFullscreenContent",
   props: {
-    isOpen: prop.boolean(false)
+    isOpen: prop.boolean(false),
+    attributes: prop.generic<Record<string, unknown>>()
   },
   emits: {
     close: emit()
@@ -23,7 +24,11 @@ export default defineComponent({
         },
         () =>
           props.isOpen &&
-          h("div", { class: [scss.fullscreenContents, "vmu-text-on-surface"] }, slots.default && slots.default())
+          h(
+            "div",
+            { ...props.attributes, class: [scss.fullscreenContents, "vmu-text-on-surface", props.attributes?.class] },
+            slots.default && slots.default()
+          )
       );
   }
 });

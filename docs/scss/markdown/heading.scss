@@ -55,3 +55,26 @@
     letter-spacing: 0.1px;
   }
 }
+
+.component-holder {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: unset;
+    font-size: unset;
+    line-height: unset;
+    margin-bottom: unset;
+    margin-top: unset;
+    margin: unset;
+    &::after {
+      content: unset;
+      display: unset;
+      height: unset;
+      background-color: unset;
+      margin-top: unset;
+    }
+  }
+}

@@ -1,104 +1,104 @@
 @use "colors" as *;
 
 .vmu-text-body-small {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-  letter-spacing: 0.4px;
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  line-height: 16px !important;
+  letter-spacing: 0.4px !important;
 }
 
 .vmu-text-body-medium {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: 0.25px;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  letter-spacing: 0.25px !important;
 }
 
 .vmu-text-body-large {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: 0.5px;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  letter-spacing: 0.5px !important;
 }
 
 .vmu-text-label-small {
-  font-weight: 500;
-  font-size: 11px;
-  line-height: 16px;
-  letter-spacing: 0.5px;
+  font-weight: 500 !important;
+  font-size: 11px !important;
+  line-height: 16px !important;
+  letter-spacing: 0.5px !important;
 }
 
 .vmu-text-label-medium {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  letter-spacing: 0.5px;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+  line-height: 16px !important;
+  letter-spacing: 0.5px !important;
 }
 
 .vmu-text-label-large {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: 0.1px;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  letter-spacing: 0.1px !important;
 }
 
 .vmu-text-title-small {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: 0.1px;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  letter-spacing: 0.1px !important;
 }
 
 .vmu-text-title-medium {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: 0.1px;
+  font-weight: 500 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  letter-spacing: 0.1px !important;
 }
 
 .vmu-text-title-large {
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 28px;
+  font-weight: 400 !important;
+  font-size: 22px !important;
+  line-height: 28px !important;
 }
 
 .vmu-text-headline-small {
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 32px;
+  font-weight: 400 !important;
+  font-size: 24px !important;
+  line-height: 32px !important;
 }
 .vmu-text-headline-medium {
-  font-weight: 400;
-  font-size: 28px;
-  line-height: 36px;
+  font-weight: 400 !important;
+  font-size: 28px !important;
+  line-height: 36px !important;
 }
 
 .vmu-text-headline-large {
-  font-weight: 400;
-  font-size: 32px;
-  line-height: 40px;
+  font-weight: 400 !important;
+  font-size: 32px !important;
+  line-height: 40px !important;
 }
 
 .vmu-text-display-small {
-  font-weight: 400;
-  font-size: 36px;
-  line-height: 44px;
+  font-weight: 400 !important;
+  font-size: 36px !important;
+  line-height: 44px !important;
 }
 
 .vmu-text-display-medium {
-  font-weight: 400;
-  font-size: 45px;
-  line-height: 52px;
+  font-weight: 400 !important;
+  font-size: 45px !important;
+  line-height: 52px !important;
 }
 
 .vmu-text-display-large {
-  font-weight: 400;
-  font-size: 57px;
-  line-height: 64px;
+  font-weight: 400 !important;
+  font-size: 57px !important;
+  line-height: 64px !important;
 }
 
 @each $name, $color in $allColors {
   .vmu-text-#{$name} {
-    color: rgba($color, var(--vmu-color-opacity));
+    color: rgba($color, var(--vmu-color-opacity)) !important;
   }
 }
