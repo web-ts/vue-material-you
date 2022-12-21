@@ -1,17 +1,17 @@
-import useWindowDimensions from "@/composables/use-window-dimensions";
 import emit from "@/utilities/emit";
 import prop from "@/utilities/prop";
-import { StyleValue, Teleport, Transition } from "vue";
 import scss from "./index.module.scss";
+import useWindowDimensions from "@/composables/use-window-dimensions";
+import { StyleValue, Teleport, Transition } from "vue";
 
 export default defineComponent({
   name: "Scrim",
   props: {
-    open: prop.boolean(false),
-    zIndex: prop.generic(100),
-    style: prop.generic<StyleValue>(),
     id: prop.generic<string>(),
-    isLast: prop.boolean(false)
+    isLast: prop.boolean(false),
+    open: prop.boolean(false),
+    style: prop.generic<StyleValue>(),
+    zIndex: prop.generic(100)
   },
   emits: {
     "update:modelValue": emit<boolean>(),
@@ -28,12 +28,8 @@ export default defineComponent({
     const style = computed(() => [
       props.style,
       {
-        top: 0,
-        left: 0,
-        position: "fixed",
-        width: "100vw",
-        height: `${height.value}px`,
-        zIndex: props.zIndex
+        zIndex: props.zIndex,
+        height: `${height.value}px`
       }
     ]);
 
@@ -53,7 +49,6 @@ export default defineComponent({
       h(
         Teleport,
         { to: "body" },
-        // Scrim Transition
         h(
           Transition,
           {

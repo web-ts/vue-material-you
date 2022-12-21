@@ -2,7 +2,7 @@
 
 This is a simple button with a few interesting features.
 
-MD3 Link: [https://m3.material.io/components/buttons/overview](https://m3.material.io/components/buttons/overview)
+[MD3 Link](https://m3.material.io/components/buttons/overview)
 
 ## Usage
 
@@ -25,32 +25,32 @@ MD3 Link: [https://m3.material.io/components/buttons/overview](https://m3.materi
 
 ## Examples
 
-Default
+<viewer component="button-default" prop="type" values="'filled' | 'outlined' | 'text' | 'elevated' | 'tonal'" default-value="'filled'" />
 
-<div class="flex gap-4">
-  <vmu-button> Filled </vmu-button>
-  <vmu-button type="outlined"> Outlined </vmu-button>
-  <vmu-button type="text"> Text </vmu-button>
-  <vmu-button type="elevated"> Elevated </vmu-button>
-  <vmu-button type="tonal"> Tonal </vmu-button>
-</div>
+<viewer component="button-disabled" prop="disabled" values="boolean" default-value="false" />
+<viewer component="button-loading" prop="loading" values="boolean" default-value="false" />
 
-Disabled
+<viewer component="button-size" prop="size" values="'large' | 'medium' | 'small'" default-value="'large'" />
 
-<div class="flex gap-4">
-  <vmu-button disabled> Filled </vmu-button>
-  <vmu-button disabled type="outlined"> Outlined </vmu-button>
-  <vmu-button disabled type="text"> Text </vmu-button>
-  <vmu-button disabled type="elevated"> Elevated </vmu-button>
-  <vmu-button disabled type="tonal"> Tonal </vmu-button>
-</div>
+<viewer component="button-icons" prop="icon" values="string | undefined" default-value="undefined" />
 
-With Icons
+## Props Interface
 
-<div class="flex gap-4">
-  <vmu-button icon="mdi:plus"> Filled </vmu-button>
-  <vmu-button icon="mdi:search" type="outlined"> Outlined </vmu-button>
-  <vmu-button icon="mdi:home" type="text"> Text </vmu-button>
-  <vmu-button icon="mdi:arrow-right" type="elevated"> Elevated </vmu-button>
-  <vmu-button icon="mdi:book" type="tonal"> Tonal </vmu-button>
-</div>
+```ts
+withDefaults(
+  defineProps<{
+    type?: "filled" | "outlined" | "text" | "elevated" | "tonal";
+    icon?: string | null;
+    submit?: boolean;
+    reset?: boolean;
+    disabled?: boolean;
+    href?: string;
+    size?: "large" | "medium" | "small";
+  }>(),
+  {
+    type: "filled",
+    icon: null,
+    size: "large"
+  }
+);
+```

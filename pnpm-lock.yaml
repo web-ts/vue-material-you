@@ -9,6 +9,7 @@ specifiers:
   '@modyfi/vite-plugin-yaml': ^1.0.3
   '@toycode/markdown-it-class': ^1.2.4
   '@types/node': ^18.11.9
+  '@types/prismjs': ^1.26.0
   '@vitejs/plugin-vue': ^3.2.0
   '@vitest/coverage-c8': ^0.25.1
   '@vitest/ui': ^0.25.1
@@ -25,6 +26,7 @@ specifiers:
   markdown-it-prism: ^2.3.0
   postcss: ^8.4.18
   prettier: ^2.7.1
+  prismjs: ^1.29.0
   sass: ^1.56.1
   typescript: ^4.8.4
   unplugin-auto-import: ^0.11.4
@@ -46,6 +48,7 @@ devDependencies:
   '@modyfi/vite-plugin-yaml': 1.0.3_vite@3.2.3
   '@toycode/markdown-it-class': 1.2.4
   '@types/node': 18.11.9
+  '@types/prismjs': 1.26.0
   '@vitejs/plugin-vue': 3.2.0_vite@3.2.3+vue@3.2.43
   '@vitest/coverage-c8': 0.25.1_cctyao5kcecaehzi4atfgr7esa
   '@vitest/ui': 0.25.1
@@ -62,6 +65,7 @@ devDependencies:
   markdown-it-prism: 2.3.0
   postcss: 8.4.18
   prettier: 2.7.1
+  prismjs: 1.29.0
   sass: 1.56.1
   typescript: 4.8.4
   unplugin-auto-import: 0.11.4
@@ -431,6 +435,10 @@ packages:
 
   /@types/node/8.10.66:
     resolution: {integrity: sha512-tktOkFUA4kXx2hhhrB8bIFb5TbwzS4uOhKEmwiD+NoiL0qtP2OQ9mFldbgD4dV1djrlBYP6eBuQZiWjuHUpqFw==}
+    dev: true
+
+  /@types/prismjs/1.26.0:
+    resolution: {integrity: sha512-ZTaqn/qSqUuAq1YwvOFQfVW1AR/oQJlLSZVustdjwI+GZ8kr0MSHBj0tsXPW1EqHubx50gtBEjbPGsdZwQwCjQ==}
     dev: true
 
   /@types/qs/6.9.7:

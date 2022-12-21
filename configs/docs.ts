@@ -10,7 +10,8 @@ import classPlugin from "@toycode/markdown-it-class";
 export default defineConfig({
   define: {
     VERSION: JSON.stringify(process.env.npm_package_version),
-    __VUE_PROD_DEVTOOLS__: false
+    __VUE_PROD_DEVTOOLS__: false,
+    PLAYGROUND: false
   },
   plugins: [
     ...sharedPlugins,

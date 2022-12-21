@@ -1,5 +1,5 @@
 function calculateSize(width: number, height: number) {
-  return width !== height ? Math.min(width, height) : width;
+  return width !== height ? Math.min(width, height) : width / 2;
 }
 
 function calculateScale(size: number, width: number, height: number, x: number, y: number) {
@@ -11,7 +11,7 @@ function calculateScale(size: number, width: number, height: number, x: number, 
 
   const max = Math.max(w, h);
 
-  return (max / size) * 1.1;
+  return (max / size) * 1.5;
 }
 
 export default function () {
@@ -22,11 +22,10 @@ export default function () {
    * Reactive ripple state
    */
   const ripple = reactive({
-    x: 0,
-    y: 0,
-    size: 40,
+    pos: { x: 0, y: 0 },
+    size: 0,
     opacity: 0,
-    scale: 1,
+    scale: 0,
     transition: "transform"
   });
 
@@ -34,8 +33,8 @@ export default function () {
    * Ripple style object to be injected onto the ripple parent
    */
   const rippleStyleObject = computed(() => ({
-    "--ripple-pos-x": `${ripple.x}px`,
-    "--ripple-pos-y": `${ripple.y}px`,
+    "--ripple-pos-x": `${ripple.pos.x}px`,
+    "--ripple-pos-y": `${ripple.pos.y}px`,
     "--ripple-width": `${ripple.size}px`,
     "--ripple-height": `${ripple.size}px`,
     "--ripple-opacity": `${ripple.opacity}`,
@@ -59,16 +58,21 @@ export default function () {
 
     // Mouse or touch event.
     const { clientX, clientY } = event instanceof MouseEvent ? event : event.touches[0];
+
     const { left, top, width, height } = target.getBoundingClientRect();
 
+    const pos = {
+      x: clientX - left,
+      y: clientY - top
+    };
+
+    ripple.pos = pos;
     // Calculate the ripple size based  on the lowest value between the width and height
     ripple.size = calculateSize(width, height);
     ripple.transition = "transform";
-    ripple.x = clientX - left;
-    ripple.y = clientY - top;
     ripple.opacity = 0.2;
 
-    ripple.scale = calculateScale(ripple.size, width, height, ripple.x, ripple.y);
+    ripple.scale = calculateScale(ripple.size, width, height, ripple.pos.x, ripple.pos.y);
 
     start = new Date();
   }
@@ -81,26 +85,23 @@ export default function () {
     const { width, height } = target.getBoundingClientRect();
     const end = new Date();
     const elapsed = Math.max(end?.getMilliseconds() - start?.getMilliseconds(), 0);
-
-    const timeLeft = 200 - elapsed;
+    const timeLeft = 250 - elapsed;
 
     animationTimeout = setTimeout(() => {
       ripple.transition = "opacity";
       ripple.opacity = 0;
       opacityTimeout = setTimeout(() => {
-        ripple.scale = 1;
+        ripple.scale = 0;
         ripple.size = calculateSize(width, height);
-        ripple.x = 0;
-        ripple.y = 0;
-      }, 200);
+        ripple.pos = { x: 0, y: 0 };
+      }, 250);
     }, timeLeft);
   }
 
   const events = {
-    onMousedown: onPointerdown,
-    onTouchdown: onPointerdown,
-    onMouseup: onPointerup,
-    onTouchup: onPointerup
+    onPointerdown,
+    onPointerup,
+    onPointerleave: onPointerup
   };
 
   return { rippleStyleObject, events };

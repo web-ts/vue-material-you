@@ -9,6 +9,15 @@
     <main>
       <div id="app"></div>
     </main>
-    <script type="module" src="/docs/main.ts"></script>
+    <script type="module">
+      const script = document.createElement("script");
+      script.type = "module";
+      if (!PLAYGROUND) {
+        script.src = "/docs/main.ts";
+      } else {
+        script.src = "/playground/main.ts";
+      }
+      document.body.appendChild(script);
+    </script>
   </body>
 </html>

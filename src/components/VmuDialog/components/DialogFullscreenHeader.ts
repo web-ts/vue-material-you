@@ -1,8 +1,8 @@
 import prop from "@/utilities/prop";
-import scss from "./index.module.scss";
+import scss from "../index.module.scss";
 import closeIcon from "@/icons/close.svg?raw";
-import VmuButton from "../VmuButton";
-import { DialogAction } from "./types";
+import VmuButton from "../../VmuButton";
+import { DialogAction } from "../types";
 import emit from "@/utilities/emit";
 import { getMessage } from "@/messages";
 

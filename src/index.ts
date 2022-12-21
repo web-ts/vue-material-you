@@ -12,6 +12,8 @@ export { default as VmuAppBar } from "./components/VmuAppBar";
 export { default as VmuCard } from "./components/VmuCard";
 export { default as VmuNavRail } from "./components/VmuNavRail";
 export { default as VmuListItem } from "./components/VmuListItem";
+export { default as VmuTabs } from "./components/VmuTabs";
+export { default as VmuTab } from "./components/VmuTabs/VmuTab";
 
 export { default as createVueMaterialYou } from "./install";
 export { default as useForm } from "./composables/use-form";

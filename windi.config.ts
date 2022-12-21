@@ -15,7 +15,7 @@ function generateColor(colorName: string) {
 
 export default defineConfig({
   extract: {
-    include: ["docs/**/*.{vue,html,jsx,tsx}", "configs/**/*.ts"],
+    include: ["docs/**/*.{vue,html,jsx,tsx}", "playground/**/*.{vue,html,jsx,tsx}", "configs/**/*.ts"],
     exclude: ["node_modules", ".git"]
   },
   theme: {

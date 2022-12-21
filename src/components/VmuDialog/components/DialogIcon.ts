@@ -1,6 +1,6 @@
 import prop from "@/utilities/prop";
-import VmuIcon from "../VmuIcon";
-import scss from "./index.module.scss";
+import VmuIcon from "../../VmuIcon";
+import scss from "../index.module.scss";
 
 export default defineComponent({
   name: "DialogIcon",

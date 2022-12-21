@@ -1,6 +1,6 @@
 import emit from "@/utilities/emit";
 import prop from "@/utilities/prop";
-import scss from "./index.module.scss";
+import scss from "../index.module.scss";
 import { Transition } from "vue";
 
 export default defineComponent({
@@ -26,7 +26,7 @@ export default defineComponent({
           props.isOpen &&
           h(
             "div",
-            { ...props.attributes, class: [scss.fullscreenContents, "vmu-text-on-surface", props.attributes?.class] },
+            { ...props.attributes, class: [scss.fullscreenContent, "vmu-text-on-surface", props.attributes?.class] },
             slots.default && slots.default()
           )
       );

@@ -1,13 +1,13 @@
 import emit from "@/utilities/emit";
 import prop from "@/utilities/prop";
-import scss from "./index.module.scss";
+import scss from "../index.module.scss";
 import { Transition } from "vue";
 
 export default defineComponent({
   name: "DialogContent",
   props: {
-    isOpen: prop.boolean(false),
-    attributes: prop.generic<Record<string, unknown>>()
+    attributes: prop.generic<Record<string, unknown>>(),
+    isOpen: prop.boolean(false)
   },
   emits: {
     close: emit()
@@ -38,21 +38,19 @@ export default defineComponent({
         Transition,
         {
           name: "vmu-dialog-content",
-          onBeforeLeave: () => {
-            emit("close");
-          }
+          onBeforeLeave: () => emit("close")
         },
         () =>
           props.isOpen &&
           h(
             "div",
             {
-              ...props.attributes,
               ref: dialog,
-              class: [scss.contents, "vmu-text-on-surface", props.attributes?.class],
-              style: `--vmu-max-height: ${size.value}px`
+              class: [scss.content, "vmu-text-on-surface", props.attributes?.class],
+              style: `--vmu-max-height: ${size.value}px`,
+              ...props.attributes
             },
-            slots.default && slots.default()
+            slots.default?.()
           )
       );
   }

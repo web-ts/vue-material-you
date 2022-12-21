@@ -5,15 +5,15 @@ import { StyleValue } from "vue";
 import useId from "@/composables/use-id";
 import useDialog from "../../composables/use-dialog";
 import Scrim from "../Scrim";
-import DialogTitle from "./DialogTitle";
-import DialogDescription from "./DialogDescription";
-import DialogIcon from "./DialogIcon";
+import DialogTitle from "./components/DialogTitle";
+import DialogDescription from "./components/DialogDescription";
+import DialogIcon from "./components/DialogIcon";
 import { DialogAction } from "./types";
-import DialogActions from "./DialogActions";
-import DialogContent from "./DialogContent";
+import DialogActions from "./components/DialogActions";
+import DialogContent from "./components/DialogContent";
 import { getMessage } from "@/messages";
-import DialogFullscreenContent from "./DialogFullscreenContent";
-import DialogFullscreenHeader from "./DialogFullscreenHeader";
+import DialogFullscreenContent from "./components/DialogFullscreenContent";
+import DialogFullscreenHeader from "./components/DialogFullscreenHeader";
 
 export default /* @__PURE__ */ defineComponent({
   name: "VmDialog",

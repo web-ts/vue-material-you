@@ -45,7 +45,9 @@ function addTableWrapper() {
 const router = useRouter();
 
 router.afterEach(() => {
-  addTableWrapper();
+  nextTick(() => {
+    addTableWrapper();
+  });
 });
 
 onMounted(() => {

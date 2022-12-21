@@ -20,7 +20,7 @@ function clickOnInput() {
 </script>
 <template>
   <div
-    class="flex p-6 justify-between items-center fixed top-0 backdrop-filter backdrop-blur-md"
+    class="flex p-6 justify-between items-center fixed top-0 backdrop-filter backdrop-blur-md z-10"
     :style="{
       'margin-left': width > 1100 ? `${Math.max((width - containerSize) / 2, 260)}px` : '',
       'max-width': width > 1550 ? `${containerSize + 320}px` : width > 1100 ? `${containerSize}px` : '',

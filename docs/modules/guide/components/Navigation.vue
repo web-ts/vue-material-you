@@ -11,7 +11,6 @@ defineProps({
 const items: Array<{ label: string; icon?: string; content: Array<{ label: string; to: string }> }> = [
   {
     label: "Introduction",
-    icon: "line-md:clipboard-list",
     content: [
       {
         label: "What is Vue Material You?",
@@ -29,7 +28,6 @@ const items: Array<{ label: string; icon?: string; content: Array<{ label: strin
   },
   {
     label: "Components",
-    icon: "line-md:grid-3-filled",
     content: [
       {
         label: "VmuButton",
@@ -42,12 +40,15 @@ const items: Array<{ label: string; icon?: string; content: Array<{ label: strin
     ]
   },
   {
-    label: "Material Components",
-    icon: "line-md:plus-circle",
+    label: "Api",
     content: [
       {
-        label: "test",
-        to: "/guide/intro"
+        label: "Color System",
+        to: "/guide/api/color"
+      },
+      {
+        label: "Dark Mode",
+        to: "/guide/api/dark-mode"
       }
     ]
   }
@@ -57,7 +58,7 @@ const { width } = useWindowDimensions();
 <template>
   <div
     v-if="width > 1100"
-    class="min-w-[260px] fixed vmu-bg-surface-variant top-0 left-0 h-screen vmu-elevation-2 vmu-text-on-surface-variant flex flex-col items-end pr-8"
+    class="min-w-[260px] fixed vmu-bg-surface-variant top-0 left-0 h-screen vmu-elevation-2 vmu-text-on-surface-variant z-20 flex flex-col items-end pr-8"
     :style="`width: ${(width - containerSize) / 2}px`"
   >
     <router-link
