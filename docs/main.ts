@@ -1,10 +1,11 @@
-import { createVueMaterialYou, setMessages, VmuButton } from "@/index";
+import { createVueMaterialYou, setMessages, VmuButton, VmuForm, VmuInput, VmuListItem } from "@/index";
 import App from "./App.vue";
 import router from "./router";
 import { Icon } from "@iconify/vue";
-import "@/scss/style.scss";
 import "./scss/style.scss";
 import "virtual:windi.css";
+import "@/scss/style.scss";
+import Viewer from "./modules/viewer/components/Viewer.vue";
 
 const materialYou = createVueMaterialYou({
   color: "#42b883",
@@ -28,4 +29,8 @@ const app = createApp(App);
 app.use(materialYou);
 app.use(router);
 app.component("VmuButton", VmuButton);
+app.component("VmuInput", VmuInput);
+app.component("VmuForm", VmuForm);
+app.component("VmuListItem", VmuListItem);
+app.component("Viewer", Viewer);
 app.mount("#app");

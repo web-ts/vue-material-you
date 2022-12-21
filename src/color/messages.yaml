@@ -1,0 +1,3 @@
+---
+INVALID_HEX: 'Invalid HEX color. Please use a valid HEX (eg. #12F349) color.'
+NO_TARGET_ELEMENT: Could not find the target element for the color module.

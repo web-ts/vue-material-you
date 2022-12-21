@@ -6,6 +6,28 @@
   font-family: "Open Sans", sans-serif;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: rgb(var(--vmu-color-surface-variant));
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--vmu-color-on-surface-variant), 0.7);
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 28px;
+
+  &:hover {
+    background-color: rgba(var(--vmu-color-on-surface-variant), 0.9);
+  }
+}
+
 /***
     The new CSS reset - version 1.7.3 (last updated 7.8.2022)
     GitHub page: https://github.com/elad2412/the-new-css-reset

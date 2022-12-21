@@ -23,7 +23,7 @@ export default defineComponent({
     supportingText: prop.generic<string>(),
     max: prop.generic<number>(),
     placeholder: prop.generic<string>(),
-    type: prop.generic<string>("text"),
+    type: prop.generic<string>("text")
   },
   emits: {
     "update:modelValue": emit<any>()
@@ -60,30 +60,42 @@ export default defineComponent({
       return "";
     });
 
+    function focusOnInput(e: MouseEvent) {
+      e.preventDefault();
+      const input = document.getElementById(id.value);
+
+      if (input) input.focus();
+    }
+
     return () =>
       h("div", {}, [
-        h(InputContainer, { leadingIcon: props.leadingIcon, trailingIcon: props.trailingIcon }, () => [
-          h(InputIcon, { icon: props.leadingIcon, isLeading: true }),
-          h(InputLabel, {
-            label: props.label,
-            id: id.value,
-            isFocused: isFocused.value,
-            model: model.value,
-            leadingIcon: props.leadingIcon
-          }),
-          h("input", {
-            id: id.value,
-            class: ["vmu-text-body-large"],
-            type: props.type,
-            placeholder: props.placeholder,
-            value: model.value,
-            "aria-label": props.ariaLabel,
-            onFocus,
-            onBlur,
-            onInput
-          }),
-          h(InputIcon, { icon: props.trailingIcon, isLeading: false })
-        ]),
+        h(
+          InputContainer,
+          { leadingIcon: props.leadingIcon, trailingIcon: props.trailingIcon, onMousedown: focusOnInput },
+          () => [
+            h(InputIcon, { icon: props.leadingIcon, isLeading: true }),
+            h(InputLabel, {
+              label: props.label,
+              id: id.value,
+              isFocused: isFocused.value,
+              model: model.value,
+              leadingIcon: props.leadingIcon
+            }),
+            h("input", {
+              id: id.value,
+              name: name.value,
+              class: ["vmu-text-body-large"],
+              type: props.type,
+              placeholder: props.placeholder,
+              value: model.value,
+              "aria-label": props.ariaLabel,
+              onFocus,
+              onBlur,
+              onInput
+            }),
+            h(InputIcon, { icon: props.trailingIcon, isLeading: false })
+          ]
+        ),
         (supporting.value || props.max) &&
           h(InputSupportingText, {
             text: supporting.value,

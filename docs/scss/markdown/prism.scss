@@ -1,7 +1,7 @@
 code[class*="language-"],
 pre[class*="language-"] {
-  background: rgb(var(--vmu-color-surface));
-  color: rgb(var(--vmu-color-on-surface));
+  background: rgb(12, 12, 12);
+  color: rgb(195, 195, 195);
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
   font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
   direction: ltr;
@@ -45,7 +45,7 @@ pre[class*="language-"] {
 .token.comment,
 .token.prolog,
 .token.cdata {
-  color: hsl(220, 10%, 40%);
+  color: hsl(0, 0%, 36%);
 }
 
 .token.doctype,

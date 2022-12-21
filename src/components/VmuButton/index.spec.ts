@@ -1,7 +1,6 @@
-import { mount } from "@vue/test-utils";
-import { expect, describe, it } from "vitest";
-
 import VmuButton from ".";
+import { describe, expect, it } from "vitest";
+import { mount } from "@vue/test-utils";
 
 describe("VmuButton", () => {
   it("should render a filled button", async () => {

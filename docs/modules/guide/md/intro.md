@@ -31,4 +31,3 @@ I always find myself in need to create custom form components and inputs and eve
 | VmuForm         |    ✅    |  🚧   |      🚧       |  🚧  |
 | VmuIcon         |    ✅    |  ✅   |      🚧       |  🚧  |
 | VmuInput        |    ✅    |  🚧   |      🚧       |  🚧  |
-

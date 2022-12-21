@@ -7,7 +7,9 @@ specifiers:
   '@iconify/vue': ^4.0.0
   '@material/material-color-utilities': ^0.2.0
   '@modyfi/vite-plugin-yaml': ^1.0.3
+  '@toycode/markdown-it-class': ^1.2.4
   '@types/node': ^18.11.9
+  '@types/prismjs': ^1.26.0
   '@vitejs/plugin-vue': ^3.2.0
   '@vitest/coverage-c8': ^0.25.1
   '@vitest/ui': ^0.25.1
@@ -19,9 +21,12 @@ specifiers:
   cross-env: ^7.0.3
   eslint: ^8.27.0
   happy-dom: ^7.6.7
+  markdown-it-anchor: ^8.6.5
+  markdown-it-highlightjs: ^4.0.1
   markdown-it-prism: ^2.3.0
   postcss: ^8.4.18
   prettier: ^2.7.1
+  prismjs: ^1.29.0
   sass: ^1.56.1
   typescript: ^4.8.4
   unplugin-auto-import: ^0.11.4
@@ -41,7 +46,9 @@ devDependencies:
   '@iconify/vue': 4.0.0_vue@3.2.43
   '@material/material-color-utilities': 0.2.0
   '@modyfi/vite-plugin-yaml': 1.0.3_vite@3.2.3
+  '@toycode/markdown-it-class': 1.2.4
   '@types/node': 18.11.9
+  '@types/prismjs': 1.26.0
   '@vitejs/plugin-vue': 3.2.0_vite@3.2.3+vue@3.2.43
   '@vitest/coverage-c8': 0.25.1_cctyao5kcecaehzi4atfgr7esa
   '@vitest/ui': 0.25.1
@@ -53,9 +60,12 @@ devDependencies:
   cross-env: 7.0.3
   eslint: 8.27.0
   happy-dom: 7.6.7
+  markdown-it-anchor: 8.6.5
+  markdown-it-highlightjs: 4.0.1
   markdown-it-prism: 2.3.0
   postcss: 8.4.18
   prettier: 2.7.1
+  prismjs: 1.29.0
   sass: 1.56.1
   typescript: 4.8.4
   unplugin-auto-import: 0.11.4
@@ -353,6 +363,10 @@ packages:
       string-argv: 0.3.1
     dev: true
 
+  /@toycode/markdown-it-class/1.2.4:
+    resolution: {integrity: sha512-hA4gHBK8moObkOYdWTjhy1wYcYy0MJeM3JjSKbsXHRpRMvIKhk6Jm+t3bXsSScTdz/byWqQbs8YIwVYjHp+SlQ==}
+    dev: true
+
   /@ts-morph/common/0.17.0:
     resolution: {integrity: sha512-RMSSvSfs9kb0VzkvQ2NWobwnj7TxCA9vI/IjR9bDHqgAyVbu2T0DN4wiKVqomyDWqO7dPr/tErSfq7urQ1Q37g==}
     dependencies:
@@ -421,6 +435,10 @@ packages:
 
   /@types/node/8.10.66:
     resolution: {integrity: sha512-tktOkFUA4kXx2hhhrB8bIFb5TbwzS4uOhKEmwiD+NoiL0qtP2OQ9mFldbgD4dV1djrlBYP6eBuQZiWjuHUpqFw==}
+    dev: true
+
+  /@types/prismjs/1.26.0:
+    resolution: {integrity: sha512-ZTaqn/qSqUuAq1YwvOFQfVW1AR/oQJlLSZVustdjwI+GZ8kr0MSHBj0tsXPW1EqHubx50gtBEjbPGsdZwQwCjQ==}
     dev: true
 
   /@types/qs/6.9.7:
@@ -1914,6 +1932,11 @@ packages:
     hasBin: true
     dev: true
 
+  /highlight.js/11.7.0:
+    resolution: {integrity: sha512-1rRqesRFhMO/PRF+G86evnyJkCgaZFOI+Z6kdj15TA18funfoqJXvgPCLSf0SWq3SRfg1j3HlDs8o4s3EGq1oQ==}
+    engines: {node: '>=12.0.0'}
+    dev: true
+
   /html-escaper/2.0.2:
     resolution: {integrity: sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==}
     dev: true
@@ -2209,6 +2232,19 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       semver: 6.3.0
+    dev: true
+
+  /markdown-it-anchor/8.6.5:
+    resolution: {integrity: sha512-PI1qEHHkTNWT+X6Ip9w+paonfIQ+QZP9sCeMYi47oqhH+EsW8CrJ8J7CzV19QVOj6il8ATGbK2nTECj22ZHGvQ==}
+    peerDependencies:
+      '@types/markdown-it': '*'
+      markdown-it: '*'
+    dev: true
+
+  /markdown-it-highlightjs/4.0.1:
+    resolution: {integrity: sha512-EPXwFEN6P5nqR3G4KjT20r20xbGYKMMA/360hhSYFmeoGXTE6hsLtJAiB/8ID8slVH4CWHHEL7GX0YenyIstVQ==}
+    dependencies:
+      highlight.js: 11.7.0
     dev: true
 
   /markdown-it-prism/2.3.0:

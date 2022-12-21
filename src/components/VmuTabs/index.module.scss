@@ -1,0 +1,104 @@
+@use "@/scss/colors" as *;
+@use "@/scss/variables" as *;
+
+.tabList {
+  --vmu-tab-number: 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  overflow: auto;
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+}
+.tabSwitch {
+  background-color: rgb($surface);
+  color: rgb($primary);
+  height: 48px;
+  width: calc(100% / var(--vmu-tab-number));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-width: 100px;
+
+  &_icons {
+    height: 64px;
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    transition: background-color $transition;
+    opacity: 0;
+    background-color: transparent;
+    pointer-events: none;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    &::before {
+      background-color: rgb($primary);
+    }
+  }
+  &:disabled {
+    color: rgba($on-surface-variant, 0.38);
+  }
+
+  &:hover,
+  &:active {
+    &::before {
+      opacity: 0.08;
+    }
+  }
+  &:focus,
+  &:active {
+    &::before {
+      opacity: 0.12;
+    }
+  }
+  &:disabled {
+    pointer-events: none;
+    &::before {
+      opacity: 0;
+    }
+  }
+}
+
+.underline {
+  --vmu-width: 0px;
+  --vmu-left: 0px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background-color: rgb($primary);
+  width: var(--vmu-width);
+  left: 0;
+  transform: translate3d(var(--vmu-left), 0, 0);
+
+  &_icons {
+    height: 3px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    div {
+      background-color: rgb($primary);
+      height: 3px;
+      width: 36px;
+      border-radius: 3px 3px 0 0;
+    }
+  }
+}

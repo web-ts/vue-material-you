@@ -9,7 +9,6 @@ describe("VmuIcon", () => {
   // We need to load the plugin before we can test the icon component
   const createVMU = createVueMaterialYou({
     color: "#ffffff",
-    mountedOn: "app",
     icon: {
       component: defineComponent({
         props: { theKey: { type: String }, theOverride: { type: String } },

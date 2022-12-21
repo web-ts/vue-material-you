@@ -1,7 +1,7 @@
 import prop from "@/utilities/prop";
-import VmuButton from "../VmuButton";
-import { DialogAction } from "./types";
-import scss from "./index.module.scss";
+import scss from "../index.module.scss";
+import VmuButton from "../../VmuButton";
+import { DialogAction } from "../types";
 
 export default defineComponent({
   name: "DialogActions",

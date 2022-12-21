@@ -1,0 +1,7 @@
+@use "colors" as *;
+
+@each $name, $color in $allColors {
+  .vmu-bg-#{$name} {
+    background-color: rgba($color, var(--vmu-color-opacity));
+  }
+}

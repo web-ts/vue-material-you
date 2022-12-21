@@ -1,6 +1,6 @@
-import { mount } from "@vue/test-utils";
-import { describe, expect, it } from "vitest";
 import Scrim from ".";
+import { describe, expect, it } from "vitest";
+import { mount } from "@vue/test-utils";
 
 describe("scrim", () => {
   it("should emit the open event", async () => {

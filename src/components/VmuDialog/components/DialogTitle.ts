@@ -1,5 +1,5 @@
 import prop from "@/utilities/prop";
-import scss from "./index.module.scss";
+import scss from "../index.module.scss";
 
 export default defineComponent({
   name: "DialogTitle",

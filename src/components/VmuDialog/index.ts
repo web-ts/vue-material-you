@@ -5,15 +5,15 @@ import { StyleValue } from "vue";
 import useId from "@/composables/use-id";
 import useDialog from "../../composables/use-dialog";
 import Scrim from "../Scrim";
-import DialogTitle from "./DialogTitle";
-import DialogDescription from "./DialogDescription";
-import DialogIcon from "./DialogIcon";
+import DialogTitle from "./components/DialogTitle";
+import DialogDescription from "./components/DialogDescription";
+import DialogIcon from "./components/DialogIcon";
 import { DialogAction } from "./types";
-import DialogActions from "./DialogActions";
-import DialogContent from "./DialogContent";
+import DialogActions from "./components/DialogActions";
+import DialogContent from "./components/DialogContent";
 import { getMessage } from "@/messages";
-import DialogFullscreenContent from "./DialogFullscreenContent";
-import DialogFullscreenHeader from "./DialogFullscreenHeader";
+import DialogFullscreenContent from "./components/DialogFullscreenContent";
+import DialogFullscreenHeader from "./components/DialogFullscreenHeader";
 
 export default /* @__PURE__ */ defineComponent({
   name: "VmDialog",
@@ -79,7 +79,6 @@ export default /* @__PURE__ */ defineComponent({
       h(
         Scrim,
         {
-          ...attrs,
           open: scrimOpen.value,
           id: id.value,
           isLast: isLast.value,
@@ -88,7 +87,7 @@ export default /* @__PURE__ */ defineComponent({
         // Content Transition
         () =>
           (!props.fullscreen
-            ? h(DialogContent, { isOpen: contentOpen.value, onClose: onContentClose }, () => [
+            ? h(DialogContent, { attributes: attrs, isOpen: contentOpen.value, onClose: onContentClose }, () => [
                 h(DialogIcon, { icon: props.icon }),
                 h(DialogTitle, {
                   dialogId: id.value,
@@ -104,15 +103,19 @@ export default /* @__PURE__ */ defineComponent({
                   actions: actions.value
                 })
               ])
-            : h(DialogFullscreenContent, { isOpen: contentOpen.value, onClose: onContentClose }, () => [
-                h(DialogFullscreenHeader, {
-                  dialogId: id.value,
-                  title: props.title,
-                  actions: actions.value,
-                  onClose: () => (open.value = false)
-                }),
-                slots.default && slots.default()
-              ]))
+            : h(
+                DialogFullscreenContent,
+                { attributes: attrs, isOpen: contentOpen.value, onClose: onContentClose },
+                () => [
+                  h(DialogFullscreenHeader, {
+                    dialogId: id.value,
+                    title: props.title,
+                    actions: actions.value,
+                    onClose: () => (open.value = false)
+                  }),
+                  slots.default && slots.default()
+                ]
+              ))
       );
   }
 });

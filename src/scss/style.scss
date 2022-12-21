@@ -1,6 +1,9 @@
 @use "typography";
+@use "background";
 @use "ripple";
 @use "animations";
+@use "elevation";
+@use "colors";
 
 * {
   --vmu-color-opacity: 1;

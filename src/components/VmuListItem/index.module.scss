@@ -1,0 +1,13 @@
+@use "@/scss/colors" as *;
+@use "@/scss/variables" as *;
+
+.item {
+  display: flex;
+  background-color: rgb($surface);
+  color: rgb($on-surface);
+}
+
+.headline {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

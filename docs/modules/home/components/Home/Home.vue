@@ -28,7 +28,7 @@ const cards = [
     <h1 class="vmu-text-headline-large vmu-text-on-surface text-center mb-2">Vue Material You</h1>
     <h2 class="vmu-text-body-medium vmu-text-on-surface text-center">Powerful and easy to use framework for Vue.js</h2>
     <div class="flex justify-center mt-8 gap-4 flex-wrap">
-      <vmu-button @click="router.push('/guide')">Get Started</vmu-button>
+      <vmu-button @click="router.push('/guide/get-started')">Get Started</vmu-button>
       <vmu-button type="text" href="https://github.com/web-ts/vue-material-you" target="_blank">
         View on Github
       </vmu-button>

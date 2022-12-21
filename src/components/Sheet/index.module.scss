@@ -1,0 +1,27 @@
+.sheet {
+  position: relative;
+  overflow: hidden;
+  --ripple-pos-x: 0px;
+  --ripple-pos-y: 0px;
+  --ripple-width: 0px;
+  --ripple-height: 0px;
+  --ripple-opacity: 0;
+  --ripple-scale: 0;
+  --transition-property: transform;
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: var(--ripple-width);
+    height: var(--ripple-height);
+    top: calc(var(--ripple-pos-y) - (var(--ripple-height) / 2));
+    left: calc(var(--ripple-pos-x) - (var(--ripple-width) / 2));
+    border-radius: 100%;
+    background-color: rgb(var(--vmu-ripple-color));
+    opacity: var(--ripple-opacity);
+    transform: scale(var(--ripple-scale), var(--ripple-scale));
+    transition-property: var(--transition-property);
+    transition-duration: 250ms;
+    transition-timing-function: ease-out;
+  }
+}

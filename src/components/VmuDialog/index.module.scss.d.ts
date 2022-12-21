@@ -1,20 +1,20 @@
 declare const classNames: {
-  readonly contents: "contents";
+  readonly content: "content";
+  readonly fullscreenContent: "fullscreenContent";
   readonly title: "title";
   readonly actions: "actions";
   readonly icon: "icon";
-  readonly fullscreenContents: "fullscreenContents";
   readonly header: "header";
   readonly header___title: "header___title";
   readonly header___close: "header___close";
 };
 export default classNames;
 export type ClassNames =
-  | "contents"
+  | "content"
+  | "fullscreenContent"
   | "title"
   | "actions"
   | "icon"
-  | "fullscreenContents"
   | "header"
   | "header___title"
   | "header___close";

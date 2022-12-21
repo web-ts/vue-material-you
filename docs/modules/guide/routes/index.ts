@@ -1,6 +1,6 @@
 import { ComponentOptions } from "vue";
 import { RouteRecordRaw } from "vue-router";
-import Guide from "../components/Guide/Guide.vue";
+import Guide from "../components/Guide.vue";
 
 const modules = import.meta.glob<{ attributes: Record<string, string>; default: ComponentOptions }>(
   "../md/**/*.md",
