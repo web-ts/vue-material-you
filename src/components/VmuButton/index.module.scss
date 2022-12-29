@@ -171,14 +171,12 @@
     }
     &:hover {
       box-shadow: elevation.$e1;
-    }
-    &:active {
-      box-shadow: none;
-    }
-    &:hover {
       &::before {
         opacity: 0.08;
       }
+    }
+    &:active {
+      box-shadow: none;
     }
     &:focus,
     &:active {
