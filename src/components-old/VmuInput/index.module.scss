@@ -1,0 +1,129 @@
+@use "@/scss/colors" as *;
+@use "@/scss/variables" as *;
+
+.container {
+  box-shadow: 0 0 0 1px rgb($outline);
+  position: relative;
+  transition: box-shadow 0.2s;
+  border-radius: 4px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  cursor: text;
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px rgb($primary);
+  }
+
+  &_error {
+    box-shadow: 0 0 0 1px rgb($error);
+
+    &:focus-within {
+      box-shadow: 0 0 0 2px rgb($error);
+    }
+  }
+
+  input {
+    appearance: textfield;
+    all: unset;
+    color: rgb($on-surface);
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+  }
+
+  &_leadingIcon {
+    padding-left: 0px;
+  }
+  &_trailingIcon {
+    padding-right: 0px;
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  color: rgb($on-surface-variant);
+
+  &_error {
+    color: rgb($error);
+  }
+
+  &_leading {
+    margin-left: 12px;
+    margin-right: 16px;
+  }
+  &_trailing {
+    margin-left: 16px;
+    margin-right: 12px;
+  }
+}
+
+.label {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  transition: all 0.2s, background-color 0s;
+  transform: translate3d(0, -50%, 0);
+  left: 16px;
+  top: 50%;
+
+  span {
+    transition: transform 0.2s;
+    display: block;
+    background-color: rgb(var(--vmu-surface));
+    color: rgb($on-surface-variant);
+    padding: 0 4px;
+    border-radius: 6px;
+  }
+
+  &_populated {
+    top: 0px;
+    left: 16px;
+
+    span {
+      color: rgb($primary);
+      transform: scale(0.85) translate(-15%, -15%);
+    }
+  }
+  &_notEmpty {
+    top: 0px;
+    left: 16px;
+
+    span {
+      transform: scale(0.85) translate(-15%, -15%);
+    }
+  }
+
+  &_leadingIcon:not(.label_populated, .label_notEmpty) {
+    left: 52px;
+  }
+
+  &_error {
+    span {
+      color: rgb($error);
+    }
+  }
+}
+
+.supportingText {
+  color: rgb($on-surface-variant);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 4px;
+
+  &_error {
+    color: rgb($error);
+  }
+}

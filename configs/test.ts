@@ -12,15 +12,15 @@ export default defineConfig({
   test: {
     globals: true,
     include: ["./src/**/*.spec.ts"],
-    environment: "happy-dom",
+    environment: "jsdom",
     coverage: {
       lines: 80,
       functions: 80,
       branches: 80,
       statements: 80
     },
-    deps: {
-      inline: ["@material/material-color-utilities"]
+    transformMode: {
+      web: [/.[tj]sx$/]
     }
   },
   plugins: [...sharedPlugins, vue()]

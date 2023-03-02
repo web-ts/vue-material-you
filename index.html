@@ -5,19 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue Material You</title>
   </head>
-  <body style="background-color: rgb(var(--vmu-color-background)); --vmu-surface: var(--vmu-color-surface)">
+  <body class="bg-surface">
     <main>
       <div id="app"></div>
     </main>
-    <script type="module">
-      const script = document.createElement("script");
-      script.type = "module";
-      if (!PLAYGROUND) {
-        script.src = "/docs/main.ts";
-      } else {
-        script.src = "/playground/main.ts";
-      }
-      document.body.appendChild(script);
-    </script>
+    <script type="module" src="./docs/main.ts"></script>
   </body>
 </html>

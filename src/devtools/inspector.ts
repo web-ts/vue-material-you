@@ -1,4 +1,4 @@
-import { settings } from "@/color/dark-mode";
+import { darkModeOptions as settings } from "@/color";
 import {
   CustomInspectorNode,
   CustomInspectorState,
@@ -20,7 +20,7 @@ export const nodes: Array<CustomInspectorNode> = [
   },
   {
     id: "forms",
-    label: "🧾 Forms",
+    label: "Forms",
     children: []
   }
 ];
@@ -94,7 +94,8 @@ export default function (devtoolsApi: Api) {
           },
           {
             key: "isDarkMode",
-            value: settings.userMode === "light" ? false : settings.userMode === "dark" || settings.systemMode === "dark",
+            value:
+              settings.userMode === "light" ? false : settings.userMode === "dark" || settings.systemMode === "dark",
             editable: true
           }
         ]

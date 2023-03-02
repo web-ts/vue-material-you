@@ -8,19 +8,15 @@ export default defineConfig({
     VERSION: JSON.stringify(process.env.npm_package_version)
   },
   build: {
+    minify: false,
     lib: {
       entry: resolve(__dirname, "../src/index.ts"),
       name: "VueMaterialYou",
-      fileName: (format) => `vue-material-you.${format}.js`
+      fileName: (format) => `vue-material-you.${format}.js`,
+      formats: ["es"]
     },
     rollupOptions: {
-      external: ["vue", "vue-router"],
-      output: {
-        globals: {
-          vue: "Vue",
-          "vue-router": "VueRouter"
-        }
-      }
+      external: ["vue", "vue-router"]
     }
   },
   plugins: [...sharedPlugins, dts()]

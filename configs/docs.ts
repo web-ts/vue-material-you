@@ -11,13 +11,12 @@ export default defineConfig({
   define: {
     VERSION: JSON.stringify(process.env.npm_package_version),
     __VUE_PROD_DEVTOOLS__: false,
-    PLAYGROUND: false
   },
   plugins: [
     ...sharedPlugins,
     WindiCSS(),
     vue({
-      include: [/\.vue$/, /\.md$/] // <--
+      include: [/\.vue$/, /\.md$/]
     }),
     Markdown({
       markdownItOptions: {

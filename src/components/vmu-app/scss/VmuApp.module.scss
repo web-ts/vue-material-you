@@ -1,0 +1,12 @@
+.app {
+  --vmu-surface: var(--vmu-color-surface);
+  background-color: rgb(var(--vmu-color-background));
+  color: rgb(var(--vmu-color-on-background));
+  min-height: 100vh;
+}
+
+@supports (min-height: 100dvh) {
+  .app {
+    min-height: 100dvh;
+  }
+}

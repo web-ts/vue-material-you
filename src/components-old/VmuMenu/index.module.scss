@@ -1,0 +1,48 @@
+@use "@/scss/colors" as *;
+@use "@/scss/variables" as *;
+
+.menu {
+  --vmu-menu-max-items: 5;
+  position: absolute;
+  background-color: rgb($surface-variant);
+  padding: 8px 0;
+  border-radius: 4px;
+  min-width: 100%;
+  top: calc(100% + 1px);
+  left: 0;
+  max-height: calc(48px * var(--vmu-menu-max-items) + 16px);
+  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: overlay;
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb:vertical {
+    background-color: rgb($on-surface-variant);
+    border-radius: 4px;
+  }
+  &___item {
+    cursor: pointer;
+    height: 48px;
+    color: rgb($on-surface-variant);
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &:hover {
+      background-color: rgba($on-surface-variant, 0.1);
+    }
+    &_focused {
+      background-color: rgba($on-surface-variant, 0.2);
+      &:hover {
+        background-color: rgba($on-surface-variant, 0.3);
+      }
+    }
+  }
+}

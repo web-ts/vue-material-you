@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import useWindowDimensions from "@/composables/use-window-dimensions";
-import prop from "@/utilities/prop";
+import prop from "vue-typed-props";
+import { VmuIcon } from "@/index";
 const props = defineProps({
-  markdown: prop.required<HTMLElement>(),
-  containerSize: prop.required<number>()
+  markdown: prop.required.object<HTMLElement>()
 });
 
 function getElements() {
@@ -28,11 +27,12 @@ onMounted(() => {
 onBeforeMount(() => {
   observer.disconnect();
 });
-
-const { width } = useWindowDimensions();
 </script>
 <template>
-  <div class="fixed top-20 right-0" :style="`width: ${(width - containerSize) / 2}px`">
+  <div class="sticky top-0 left-0 h-screen vmu-text-on-surface-variant z-20 flex flex-col items-end pr-8">
+    <a class="cursor-pointer text-primary" href="https://github.com/web-ts/vue-material-you" target="_blank">
+      <vmu-icon icon="foundation:social-github" width="24px" height="24px" />
+    </a>
     <div class="vmu-text-on-surface">
       <h2 class="font-bold mb-4">On this page</h2>
       <ul class="flex flex-col gap-2 whitespace-nowrap max-w-xs min-w-xs">

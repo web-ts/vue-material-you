@@ -1,3 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`scrim > should emit the open event 1`] = `"<div data-v-app=\\"\\"><!--teleport start--><!--teleport end--></div><transition-stub name=\\"vmu-scrim\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"><div class=\\"_scrim_717d7a\\" style=\\"top: 0px; left: 0px; position: fixed; width: 100vw; height: 0px; z-index: 100;\\" tabindex=\\"-1\\" role=\\"dialog\\" aria-hidden=\\"true\\" aria-modal=\\"true\\" aria-labelledby=\\"undefined_title\\" aria-describedby=\\"undefined_description\\"></div></transition-stub>"`;

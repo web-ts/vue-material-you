@@ -1,11 +1,7 @@
 import { DefineComponent } from "vue";
-import { VMConfiguration } from "./types";
+import { VMUOptions } from "./types";
 
-const config: VMConfiguration = { mountedOn: null };
-
-export function getConfiguration() {
-  return config;
-}
+export const config: VMUOptions = {};
 
 /**
  *
@@ -14,15 +10,11 @@ export function getConfiguration() {
  * @param defaults The default props for the icon
  */
 export function setIconData(icon: DefineComponent<any, any, any, any>, key: string, defaults?: Record<string, any>) {
-  if (!config.icon)
-    config.icon = {
-      component: icon,
-      key,
-      defaults
-    };
-}
+  if (!icon) throw new Error("Icon component is required");
 
-export function setMountedOn(container: HTMLElement) {
-
-  config.mountedOn = container;
+  config.icon = {
+    component: icon,
+    key,
+    defaults
+  };
 }

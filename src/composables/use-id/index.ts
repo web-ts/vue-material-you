@@ -1,7 +1,7 @@
-import randomString from "@/utilities/random-string";
+import uid from "@/utilities/uid";
 
-export default function (props: { id: string | null | undefined }) {
-  const id = computed(() => (props.id ? props.id : `identity_${randomString()}`));
+export default function (props: { id?: string | null }) {
+  const id = computed(() => (props.id ? props.id : uid()));
 
   return id;
 }

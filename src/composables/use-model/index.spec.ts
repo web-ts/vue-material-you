@@ -1,4 +1,4 @@
-import prop from "@/utilities/prop";
+import prop from "vue-typed-props";
 import emit from "@/utilities/emit";
 import { expect, describe, it } from "vitest";
 import { mount } from "@vue/test-utils";
@@ -6,7 +6,7 @@ import useModel from ".";
 
 const component = defineComponent({
   props: {
-    modelValue: prop.required<string>()
+    modelValue: prop.required.string()
   },
   emits: { "update:modelValue": emit<string>() },
   setup(props, { emit }) {

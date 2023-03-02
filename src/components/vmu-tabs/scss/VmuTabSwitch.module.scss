@@ -1,0 +1,69 @@
+@use "@/scss/colors" as *;
+@use "@/scss/variables" as *;
+
+.tabSwitch {
+  background-color: rgb($surface);
+  color: rgb($primary);
+  height: 48px;
+  width: calc(100% / var(--vmu-tab-number));
+  min-width: 100px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  user-select: none;
+
+  &_icons {
+    height: 64px;
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    transition: background-color $transition;
+    opacity: 0;
+    background-color: transparent;
+    pointer-events: none;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    &::before {
+      background-color: rgb($primary);
+    }
+  }
+  &:disabled {
+    color: rgba($on-surface-variant, 0.38);
+    pointer-events: none;
+    &::before {
+      opacity: 0;
+    }
+  }
+
+  &:hover,
+  &:active {
+    &::before {
+      opacity: 0.08;
+    }
+  }
+  &:focus,
+  &:active {
+    &::before {
+      opacity: 0.12;
+    }
+  }
+
+  &_focused {
+    &::before {
+      background-color: rgb($primary);
+      opacity: 0.12;
+    }
+  }
+}

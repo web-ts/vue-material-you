@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { VmuApp } from "@/index";
+</script>
 <template>
-  <router-view />
+  <VmuApp>
+    <router-view />
+  </VmuApp>
 </template>

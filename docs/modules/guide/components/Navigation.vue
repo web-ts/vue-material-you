@@ -1,12 +1,5 @@
 <script setup lang="ts">
-import useWindowDimensions from "@/composables/use-window-dimensions";
-import { VmuIcon } from "@/index";
-import prop from "@/utilities/prop";
 import logo from "@docs/assets/logo.svg?raw";
-
-defineProps({
-  containerSize: prop.required<number>()
-});
 
 const items: Array<{ label: string; icon?: string; content: Array<{ label: string; to: string }> }> = [
   {
@@ -53,13 +46,10 @@ const items: Array<{ label: string; icon?: string; content: Array<{ label: strin
     ]
   }
 ];
-const { width } = useWindowDimensions();
 </script>
 <template>
   <div
-    v-if="width > 1100"
-    class="min-w-[260px] fixed vmu-bg-surface-variant top-0 left-0 h-screen vmu-elevation-2 vmu-text-on-surface-variant z-20 flex flex-col items-end pr-8"
-    :style="`width: ${(width - containerSize) / 2}px`"
+    class="min-w-[260px] sticky vmu-bg-surface-variant top-0 left-0 h-screen vmu-elevation-2 vmu-text-on-surface-variant z-20 flex flex-col items-end pr-8"
   >
     <router-link
       to="/"

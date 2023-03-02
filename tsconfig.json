@@ -2,6 +2,7 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Vite",
   "compilerOptions": {
+    "rootDir": "./",
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",
@@ -21,15 +22,6 @@
       "@docs/*": ["./docs/*"]
     }
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "docs/**/*.ts",
-    "docs/**/*.d.ts",
-    "docs/**/*.vue",
-    "playground/**/*.ts",
-    "playground/**/*.d.ts",
-    "playground/**/*.vue"
-  ],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts", "docs/**/*.ts", "docs/**/*.d.ts", "docs/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

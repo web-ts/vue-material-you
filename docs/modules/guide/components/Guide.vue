@@ -1,30 +1,11 @@
 <script setup lang="ts">
-import useWindowDimensions from "@/composables/use-window-dimensions";
+import { VmuIcon } from "@/index";
 import { useRouter } from "vue-router";
 import Contents from "./Contents.vue";
 import Navigation from "./Navigation.vue";
 import TopBar from "./TopBar.vue";
 
 const markdown = ref<HTMLElement | null>(null);
-
-const size = ref(0);
-
-function onResize() {
-  if (markdown.value) {
-    size.value = markdown.value.clientWidth;
-  }
-}
-
-onMounted(() => {
-  onResize();
-  window.addEventListener("resize", onResize);
-});
-
-onBeforeUnmount(() => {
-  window.removeEventListener("resize", onResize);
-});
-
-const { width } = useWindowDimensions();
 
 function addTableWrapper() {
   const tables = markdown.value?.querySelectorAll("table");
@@ -58,15 +39,26 @@ onMounted(() => {
 </script>
 <template>
   <div>
-    <navigation :container-size="size" />
-    <top-bar :container-size="size" />
-    <div
-      ref="markdown"
-      class="mt-20 vmu-text-on-surface max-w-4xl"
-      :class="[width > 1460 || width < 1100 ? 'mx-auto' : 'ml-[260px]', width > 1100 ? 'px-[88px]' : 'px-[16px]']"
-    >
-      <router-view />
+    <div class="flex relative">
+      <navigation class="flex-grow max-w-2xl" />
+      <div class="flex-grow">
+        <top-bar />
+        <div ref="markdown" class="vmu-text-on-surface max-w-4xl mx-auto px-4">
+          <div
+            class="w-full mb-4 bg-warning-container text-on-warning-container p-4 rounded-lg font-semibold flex items-center"
+          >
+            <div>
+              <VmuIcon icon="mdi:warning" class="mr-2" />
+            </div>
+            <div>
+              <span class="font-bold"> VueMaterialYou</span> is not ready for production. Breaking changes can be
+              introduced at any time without any warning until there is a stable release.
+            </div>
+          </div>
+          <router-view />
+        </div>
+      </div>
+      <contents v-if="markdown" :markdown="markdown" />
     </div>
-    <contents v-if="markdown && width > 1550" :container-size="size" :markdown="markdown" />
   </div>
 </template>

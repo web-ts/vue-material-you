@@ -15,6 +15,7 @@ dist
 dist-ssr
 *.local
 .idea
+.vite-ssg-temp
 .DS_Store
 *.suo
 *.ntvs*

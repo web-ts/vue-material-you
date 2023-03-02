@@ -1,0 +1,46 @@
+@use "@/scss/colors" as *;
+@use "@/scss/variables" as *;
+
+.tabList {
+  --vmu-tab-number: 0;
+  --vmu-current-tab: 0;
+  max-width: 100%;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  overflow-x: scroll;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+}
+
+.underline {
+  background-color: rgb($primary);
+  bottom: 0;
+  height: 2px;
+  left: 0;
+  min-width: 100px;
+  pointer-events: none;
+  position: absolute;
+  transform: translate3d(calc(var(--vmu-current-tab) * 100%), 0, 0);
+  transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  width: calc(100% / var(--vmu-tab-number));
+
+  &_icons {
+    align-items: center;
+    background-color: transparent;
+    display: flex;
+    height: 3px;
+    justify-content: center;
+    div {
+      background-color: rgb($primary);
+      border-radius: 3px 3px 0 0;
+      height: 3px;
+      width: 36px;
+    }
+  }
+}

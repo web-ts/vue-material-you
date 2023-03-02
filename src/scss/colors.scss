@@ -25,6 +25,22 @@ $shadow: var(--vmu-color-shadow);
 $inverse-surface: var(--vmu-color-inverse-surface);
 $inverse-on-surface: var(--vmu-color-inverse-on-surface);
 $inverse-primary: var(--vmu-color-inverse-primary);
+
+$success: var(--vmu-color-success);
+$on-success: var(--vmu-color-on-success);
+$success-container: var(--vmu-color-success-container);
+$on-success-container: var(--vmu-color-on-success-container);
+
+$info: var(--vmu-color-info);
+$on-info: var(--vmu-color-on-info);
+$info-container: var(--vmu-color-info-container);
+$on-info-container: var(--vmu-color-on-info-container);
+
+$warning: var(--vmu-color-warning);
+$on-warning: var(--vmu-color-on-warning);
+$warning-container: var(--vmu-color-warning-container);
+$on-warning-container: var(--vmu-color-on-warning-container);
+
 $disabled: var(--vmu-color-disabled);
 
 $allColors: (
@@ -55,6 +71,17 @@ $allColors: (
   inverse-surface: $inverse-surface,
   inverse-on-surface: $inverse-on-surface,
   inverse-primary: $inverse-primary,
+  success: $success,
+  on-success: $on-success,
+  success-container: $success-container,
+  on-success-container: $on-success-container,
+  info: $info,
+  on-info: $on-info,
+  info-container: $info-container,
+  on-info-container: $on-info-container,
+  warning: $warning,
+  on-warning: $on-warning,
+  warning-container: $warning-container,
+  on-warning-container: $on-warning-container,
   disabled: $disabled
 );
-

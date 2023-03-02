@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { VmuTab, VmuTabs, VmuCard } from "@/index";
 import { DefineComponent } from "vue";
-import { highlight, languages } from "prismjs";
+import prismjs from "prismjs";
+const { highlight, languages } = prismjs;
+
 defineProps<{
   component: string;
   prop: string;
@@ -24,7 +26,7 @@ Object.keys(raw).forEach((key) => {
 const currentTab = ref(0);
 </script>
 <template>
-  <vmu-card  v-if="pair[component]" class="my-4" type="outlined">
+  <vmu-card v-if="pair[component]" class="my-4" type="outlined">
     <div class="mb-4 flex flex-col gap-1 vmu-text-label-large">
       <div>
         Prop: <code>{{ prop }}</code>
@@ -38,7 +40,7 @@ const currentTab = ref(0);
     </div>
     <vmu-tabs
       v-model="currentTab"
-      :tabs="[
+      :switches="[
         { label: 'Output', icon: 'mdi:search' },
         { label: 'Code', icon: 'mdi:code' }
       ]"

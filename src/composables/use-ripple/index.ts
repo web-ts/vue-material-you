@@ -47,7 +47,7 @@ export default function () {
    */
   let start: Date;
 
-  function onPointerdown(event: MouseEvent | TouchEvent) {
+  function onPointerdown(event: PointerEvent) {
     // The target element of the event
     const target = event.target as HTMLElement | null;
 
@@ -57,7 +57,7 @@ export default function () {
     clearTimeout(animationTimeout);
 
     // Mouse or touch event.
-    const { clientX, clientY } = event instanceof MouseEvent ? event : event.touches[0];
+    const { clientX, clientY } = event;
 
     const { left, top, width, height } = target.getBoundingClientRect();
 
@@ -77,12 +77,7 @@ export default function () {
     start = new Date();
   }
 
-  function onPointerup(event: MouseEvent | TouchEvent) {
-    // The target element of the event
-    const target = event.target as HTMLElement | null;
-
-    if (!target) return;
-    const { width, height } = target.getBoundingClientRect();
+  function onPointerup() {
     const end = new Date();
     const elapsed = Math.max(end?.getMilliseconds() - start?.getMilliseconds(), 0);
     const timeLeft = 250 - elapsed;
@@ -92,7 +87,7 @@ export default function () {
       ripple.opacity = 0;
       opacityTimeout = setTimeout(() => {
         ripple.scale = 0;
-        ripple.size = calculateSize(width, height);
+        ripple.size = 0;
         ripple.pos = { x: 0, y: 0 };
       }, 250);
     }, timeLeft);

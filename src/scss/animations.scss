@@ -1,11 +1,11 @@
-.vmu-scrim-enter-active {
-  animation: vmu-scrim 0.5s;
+.vmu-opacity-enter-active {
+  animation: vmu-opacity 0.5s;
 }
-.vmu-scrim-leave-active {
-  animation: vmu-scrim 0.5s reverse;
+.vmu-opacity-leave-active {
+  animation: vmu-opacity 0.5s reverse;
 }
 
-@keyframes vmu-scrim {
+@keyframes vmu-opacity {
   0% {
     opacity: 0;
   }
